@@ -700,7 +700,206 @@
             font-weight: 700;
             color: var(--dark);
         }
+.message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
 
+        /* Terms & Conditions Styles */
+        .terms-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            border: 2px solid #e8ecef;
+        }
+
+        .terms-checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .terms-checkbox-wrapper input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .terms-label {
+            font-size: 15px;
+            color: #34495e;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .terms-link {
+            color: var(--primary);
+            text-decoration: underline;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .terms-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+            background: #f8f9fa;
+            transform: rotate(90deg);
+        }
+
+        .terms-content {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .terms-content h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-weight: 700;
+        }
+
+        .terms-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .terms-content ul {
+            margin: 15px 0;
+            padding-right: 25px;
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+        }
+
+        .modal-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e8ecef;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-accept {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-accept:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(40, 167, 69, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 25px;
+                max-height: 85vh;
+            }
+
+            .modal-title {
+                font-size: 22px;
+            }
+
+            .terms-content h3 {
+                font-size: 18px;
+            }
+        }
         /* Form Section */
         .form-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -1871,22 +2070,91 @@
                             <textarea id="utilitiesLandlord" name="utilitiesLandlord" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
                         </div>
 
-                        <!-- Additional Fields -->
+                   <!-- Additional Fields -->
                         <div class="form-group common-field">
                             <label class="form-label" for="notes">ملاحظات إضافية</label>
                             <textarea id="notes" name="notes" class="form-textarea" placeholder="أي معلومات إضافية تود مشاركتها معنا..." rows="4"></textarea>
+                        </div>
+
+                        <!-- Terms & Conditions -->
+                        <div class="terms-container">
+                            <label class="terms-checkbox-wrapper">
+                                <input type="checkbox" id="termsCheckbox" required>
+                                <span class="terms-label">
+                                    أوافق على <span class="terms-link" onclick="openTermsModal()">الشروط والأحكام</span> وسياسة الخصوصية الخاصة بمعالجة بياناتي الشخصية
+                                    <span class="required">*</span>
+                                </span>
+                            </label>
                         </div>
 
                         <div class="btn-container">
                             <button type="button" class="btn btn-secondary" onclick="goToStep1()">← رجوع</button>
                             <button type="submit" class="btn btn-primary">إرسال الطلب ✓</button>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
     </section>
+<!-- Terms & Conditions Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">الشروط والأحكام</h2>
+            <button class="close-modal" onclick="closeTermsModal()">&times;</button>
+        </div>
+        <div class="terms-content">
+            <h3>1. جمع واستخدام البيانات</h3>
+            <p>بتقديم هذا النموذج، فإنك توافق على جمع واستخدام بياناتك الشخصية من قبل RE/MAX BARAH للأغراض التالية:</p>
+            <ul>
+                <li>التواصل معك بخصوص طلبك العقاري</li>
+                <li>تقديم الاستشارات والخدمات العقارية المناسبة</li>
+                <li>إرسال العروض والفرص العقارية التي قد تهمك</li>
+                <li>تحسين جودة خدماتنا</li>
+            </ul>
 
+            <h3>2. حماية البيانات الشخصية</h3>
+            <p>نلتزم بحماية خصوصيتك وسرية معلوماتك الشخصية. لن يتم مشاركة بياناتك مع أي طرف ثالث دون موافقتك الصريحة، إلا في الحالات التي يتطلبها القانون.</p>
+
+            <h3>3. البيانات المجمعة</h3>
+            <p>تشمل البيانات التي نجمعها:</p>
+            <ul>
+                <li>الاسم الكامل ومعلومات الاتصال</li>
+                <li>تفاصيل العقار المطلوب أو المعروض</li>
+                <li>الميزانية والتفضيلات العقارية</li>
+                <li>أي معلومات إضافية تقدمها طوعاً</li>
+            </ul>
+
+            <h3>4. حقوقك</h3>
+            <p>لك الحق في:</p>
+            <ul>
+                <li>الوصول إلى بياناتك الشخصية في أي وقت</li>
+                <li>طلب تعديل أو حذف بياناتك</li>
+                <li>الانسحاب من قائمة التواصل في أي وقت</li>
+                <li>تقديم شكوى إذا كنت تعتقد أن بياناتك لم تُعالج بشكل صحيح</li>
+            </ul>
+
+            <h3>5. مدة الاحتفاظ بالبيانات</h3>
+            <p>سنحتفظ ببياناتك طالما كان ذلك ضرورياً لتقديم خدماتنا أو حسب ما يقتضيه القانون.</p>
+
+            <h3>6. الأمان</h3>
+            <p>نطبق إجراءات أمنية تقنية وتنظيمية مناسبة لحماية بياناتك من الوصول غير المصرح به أو الفقدان أو التلف.</p>
+
+            <h3>7. التواصل</h3>
+            <p>للاستفسارات المتعلقة بالخصوصية أو معالجة بياناتك، يمكنك التواصل معنا على:</p>
+            <ul>
+                <li>الهاتف: 01500070300 - 01500070400</li>
+                <li>العنوان: أبراج الموالح - برج 5 - الدور الأول - أسيوط</li>
+            </ul>
+
+            <p style="margin-top: 25px; font-weight: 600; color: var(--primary);">
+                بالموافقة على هذه الشروط، فإنك تقر بأنك قرأت وفهمت سياسة الخصوصية وتوافق على معالجة بياناتك وفقاً لها.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-accept" onclick="acceptTerms()">موافق، فهمت</button>
+        </div>
+    </div>
+</div>
 <!-- Footer -->
 <footer>
     <div class="footer-content">
@@ -1899,10 +2167,36 @@
         <p class="copyright">© 2025 RE/MAX BARAH - جميع الحقوق محفوظة</p>
     </div>
 </footer>
-    <script>
+   <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYK0oQtAw3ANhupcacb49L-8JqPnW6hq3w2fkAayQRMSVkF78CvFhnaTOMi6D1yZpd/exec';
 
+        // Terms Modal Functions
+        function openTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTermsModal() {
+            document.getElementById('termsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function acceptTerms() {
+            document.getElementById('termsCheckbox').checked = true;
+            closeTermsModal();
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('termsModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeTermsModal();
+                }
+            });
+        });
+
         // Hamburger Menu
+     
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
@@ -2031,10 +2325,18 @@
 
         const form = document.getElementById('contactForm');
 
-        form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const clientType = document.querySelector('input[name="clientType"]:checked');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+
+            // Check terms acceptance
+            if (!termsCheckbox.checked) {
+                showMessage('يجب الموافقة على الشروط والأحكام قبل إرسال الطلب', 'error');
+                termsCheckbox.focus();
+                return;
+            }
 
             const formData = {
                 agent: document.getElementById('agent').value,
