@@ -159,10 +159,10 @@
             color: white;
             padding: 40px 15px 80px;
             overflow: hidden;
-            background: url("../images/background.png");
+            background: linear-gradient(135deg, #003DA5 0%, #E31E24 100%);
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .hero::before {
@@ -346,7 +346,7 @@
             font-size: 45px;
             margin-bottom: 15px;
             display: inline-block;
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
@@ -1673,7 +1673,7 @@
 <!-- About Section -->
 <section class="section" id="about">
     <h2 class="section-title">من هي ريماكس براح؟</h2>
-    <p class="section-subtitle">الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و رقم 1 في صعيد مصر</p>
+    <p class="section-subtitle">الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و صعيد مصر</p>
     
     <div class="about-grid">
         <div class="feature-card">
@@ -1753,7 +1753,7 @@
     
     <div class="location-wrapper">
         <div class="location-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="display: block;"></iframe>
         </div>
         <div class="location-info">
             <h3>تواصل معنا</h3>
@@ -2278,13 +2278,21 @@
             <img src="images/LOGO (1).png" alt="RE/MAX BARAH" />
         </div>
         <div class="footer-divider"></div>
-        <p>الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و رقم 1 في صعيد مصر</p>
+        <p>الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و صعيد مصر</p>
         <p style="margin-top: 8px;">نساعدك في تحقيق أحلامك العقارية بأمان واحترافية عالية</p>
         <p class="copyright">© 2025 RE/MAX BARAH - جميع الحقوق محفوظة</p>
     </div>
 </footer>
 
 <script>
+// Performance Optimization
+if ('loading' in HTMLImageElement.prototype) {
+    // Native lazy loading supported
+    document.querySelectorAll('img').forEach(img => {
+        img.loading = 'lazy';
+    });
+}
+
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYK0oQtAw3ANhupcacb49L-8JqPnW6hq3w2fkAayQRMSVkF78CvFhnaTOMi6D1yZpd/exec';
 
 // Terms Modal Functions
