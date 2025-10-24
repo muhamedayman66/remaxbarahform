@@ -159,11 +159,12 @@
             color: white;
             padding: 40px 15px 80px;
             overflow: hidden;
-            background: linear-gradient(135deg, #003DA5 0%, #E31E24 100%);
+            background-image: url('./images/background.png');
+            background-color: linear-gradient(135deg, #003DA5 0%, #E31E24 100%);
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            background-image: url('./images/background.png');
+            background-repeat: no-repeat;
+            background-attachment: scroll;
         }
 
         .hero::before {
@@ -1300,9 +1301,10 @@
                 padding-top: 60px;
             }
 
-            .navbar {
-                height: 60px;
-                padding: 8px 12px;
+            .hero {
+                min-height: 65vh;
+                padding: 35px 12px 60px;
+                background-attachment: scroll;
             }
 
             .navbar-logo {
@@ -1565,6 +1567,12 @@
         @media (max-width: 480px) {
             .navbar-logo {
                 gap: 4px;
+            }
+
+            .hero {
+                min-height: 60vh;
+                background-attachment: scroll;
+                background-size: cover;
             }
 
             .logo-img {
