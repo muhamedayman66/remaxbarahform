@@ -2048,7 +2048,7 @@
             <div id="messageBox" class="message"></div>
 
             <form id="contactForm">
-       <!-- STEP 1: Personal Information -->
+    <!-- STEP 1: Personal Information -->
 <div class="form-step active" id="step1">
     <div class="section-header">
         <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px;">معلوماتك الشخصية</h3>
@@ -2099,9 +2099,9 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="whatsapp">رقم الواتساب <span class="required">*</span></label>
+            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
             <div style="display: flex; gap: 10px;">
-                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;" required>
+                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
                     <option value="">كود الدولة</option>
                     <option value="+20">مصر (+20)</option>
                     <option value="+966">السعودية (+966)</option>
@@ -2114,7 +2114,7 @@
                     <option value="+961">لبنان (+961)</option>
                     <option value="+1">الولايات المتحدة (+1)</option>
                 </select>
-                <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب" required>
+                <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب (اختياري)">
             </div>
         </div>
     </div>
@@ -2523,7 +2523,7 @@
 // =====================================================
 // 1. CONFIGURATION & CONSTANTS
 // =====================================================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJ4UNNpPcyG0sMlRuUJ_hXWSuRSkS_thMvu-nRxRYZVH8HMU0JyAvXwr3PAPhilpw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo-QIiqykkapWLMp_uAQNuHhNKlYT5pfoevoBNMqlCJ9qt2WuN0mtxdtFaSnOCnssb/exec';
 
 // =====================================================
 // 2. PERFORMANCE OPTIMIZATION
@@ -2715,8 +2715,8 @@ function goToStep2() {
     const agent = document.getElementById('agent').value;
     const clientType = document.querySelector('input[name="clientType"]:checked');
 
-    // Validation
-    if (!name || !phone || !phoneCountryCode || !whatsapp || !whatsappCountryCode || !agent || !clientType) {
+    // Validation - الحقول الإجبارية فقط
+    if (!name || !phone || !phoneCountryCode || !agent || !clientType) {
         showMessage('الرجاء ملء جميع الحقول المطلوبة', 'error');
         return;
     }
@@ -2741,11 +2741,13 @@ function goToStep2() {
         return;
     }
 
-    // WhatsApp number validation based on country code
-    const whatsappRule = phoneValidationRules[whatsappCountryCode];
-    if (!whatsappRule || !whatsappRule.regex.test(whatsapp.replace(/\s+/g, ''))) {
-        showMessage(whatsappRule ? whatsappRule.message : 'الرجاء إدخال رقم واتساب صحيح', 'error');
-        return;
+    // WhatsApp number validation (اختياري - فقط لو المستخدم دخل رقم)
+    if (whatsapp && whatsappCountryCode) {
+        const whatsappRule = phoneValidationRules[whatsappCountryCode];
+        if (!whatsappRule || !whatsappRule.regex.test(whatsapp.replace(/\s+/g, ''))) {
+            showMessage(whatsappRule ? whatsappRule.message : 'الرجاء إدخال رقم واتساب صحيح', 'error');
+            return;
+        }
     }
 
     // Update progress
@@ -2831,7 +2833,6 @@ function toggleSellerRentDetails(select) {
         rentDetails.style.display = 'none';
     }
 }
-
 // =====================================================
 // 8. MESSAGE DISPLAY
 // =====================================================
