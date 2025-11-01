@@ -2054,23 +2054,33 @@
         <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px;">معلوماتك الشخصية</h3>
     </div>
 
-    <div class="form-group">
-        <label class="form-label" for="agent">اسم الوكيل <span class="required">*</span></label>
-        <select id="agent" name="agent" class="form-select" required>
-            <option value="">اختر اسم الوكيل</option>
-            <option value="لا يوجد وكيل">لا يوجد وكيل</option>
-            <option value="محمد ايمن">محمد ايمن</option>
-            <option value="مريم رشاد">مريم رشاد</option>
-            <option value="ساندرا امجد">ساندرا امجد</option>
-            <option value="كريستين مجدي">كريستين مجدي</option>
-            <option value="فاطمه ايهاب">فاطمه ايهاب</option>
-            <option value="ساره سعد">ساره سعد</option>
-            <option value="ايه فاروق">ايه فاروق</option>
-            <option value="الاء حاتم">الاء حاتم</option>
-            <option value="امنه جمال">امنه جمال</option>
-            <option value="ايه محمد">ايه محمد</option>
-        </select>
-    </div>
+<div class="form-group">
+  <label class="form-label" for="agent">
+    اختر اسم المستشار العقاري المسؤول عن متابعتك
+    <span class="required">*</span>
+  </label>
+  <select id="agent" name="agent" class="form-select" required>
+    <option value="" disabled selected>— اختر المستشار العقاري —</option>
+    <option value="غير متابع">غير متابع مع مستشار عقاري</option>
+    <optgroup label="الإدارة">
+      <option value="المدير العام">المدير العام (Owner)</option>
+    </optgroup>
+    <optgroup label="فريق المبيعات">
+      <option value="محمد ايمن">محمد أيمن</option>
+      <option value="ماركو ناصر">ماركو ناصر</option>
+      <option value="مريم رشاد">مريم رشاد</option>
+      <option value="ساندرا امجد">ساندرا أمجد</option>
+      <option value="كريستين مجدي">كريستين مجدي</option>
+      <option value="فاطمه ايهاب">فاطمة إيهاب</option>
+      <option value="ساره سعد">سارة سعد</option>
+      <option value="ايه فاروق">آية فاروق</option>
+      <option value="الاء حاتم">الاء حاتم</option>
+      <option value="امنه جمال">آمنة جمال</option>
+      <option value="ايه محمد">آية محمد</option>
+    </optgroup>
+  </select>
+</div>
+
 
     <div class="form-group">
         <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
