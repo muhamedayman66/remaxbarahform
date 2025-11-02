@@ -2241,8 +2241,8 @@
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="utilities">جاهزية المرافق</label>
-                        <textarea id="utilities" name="utilities" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
+                       <label class="form-label" for="utilities">جاهزية المرافق <span class="required">*</span></label>
+                       <textarea id="utilities" name="utilities" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
@@ -2737,35 +2737,47 @@ function goToStep2() {
         return;
     }
 
-    // Phone number validation based on country code
-    const phoneValidationRules = {
-        '+20': { regex: /^(010|011|012|015)\d{8}$/, digits: 11, message: 'الرجاء إدخال رقم هاتف مصري صحيح (11 رقمًا)' },
-        '+966': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف سعودي صحيح (9 أرقام)' },
-        '+971': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف إماراتي صحيح (9 أرقام)' },
-        '+965': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف كويتي صحيح (8 أرقام)' },
-        '+974': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف قطري صحيح (8 أرقام)' },
-        '+968': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف عماني صحيح (8 أرقام)' },
-        '+973': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف بحريني صحيح (8 أرقام)' },
-        '+962': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف أردني صحيح (9 أرقام)' },
-        '+961': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف لبناني صحيح (8 أرقام)' },
-        '+1': { regex: /^\d{10}$/, digits: 10, message: 'الرجاء إدخال رقم هاتف أمريكي صحيح (10 أرقام)' }
-    };
+// Phone number validation based on country code
+const phoneValidationRules = {
+    '+20': { 
+        regex: /^(0?(10|11|12|15)\d{8})$/, 
+        digits: '10 أو 11', 
+        message: 'الرجاء إدخال رقم هاتف مصري صحيح (10 أرقام مثل 1012345678 أو 11 رقم مثل 01012345678)' 
+    },
+    '+966': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف سعودي صحيح (9 أرقام)' },
+    '+971': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف إماراتي صحيح (9 أرقام)' },
+    '+965': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف كويتي صحيح (8 أرقام)' },
+    '+974': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف قطري صحيح (8 أرقام)' },
+    '+968': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف عماني صحيح (8 أرقام)' },
+    '+973': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف بحريني صحيح (8 أرقام)' },
+    '+962': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف أردني صحيح (9 أرقام)' },
+    '+961': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف لبناني صحيح (8 أرقام)' },
+    '+1': { regex: /^\d{10}$/, digits: 10, message: 'الرجاء إدخال رقم هاتف أمريكي صحيح (10 أرقام)' }
+};
 
-    const phoneRule = phoneValidationRules[phoneCountryCode];
-    if (!phoneRule || !phoneRule.regex.test(phone.replace(/\s+/g, ''))) {
-        showMessage(phoneRule ? phoneRule.message : 'الرجاء إدخال رقم هاتف صحيح', 'error');
+// Phone validation
+const cleanPhone = phone.replace(/\s+/g, '');
+const phoneRule = phoneValidationRules[phoneCountryCode];
+if (!phoneRule || !phoneRule.regex.test(cleanPhone)) {
+    showMessage(phoneRule ? phoneRule.message : 'الرجاء إدخال رقم هاتف صحيح', 'error');
+    return;
+}
+
+// WhatsApp number validation (اختياري - فقط لو المستخدم دخل رقم)
+if (whatsapp && whatsappCountryCode) {
+    const cleanWhatsapp = whatsapp.replace(/\s+/g, '');
+    const whatsappRule = phoneValidationRules[whatsappCountryCode];
+    
+    if (!whatsappRule) {
+        showMessage('الرجاء إدخال رقم واتساب صحيح', 'error');
         return;
     }
-
-    // WhatsApp number validation (اختياري - فقط لو المستخدم دخل رقم)
-    if (whatsapp && whatsappCountryCode) {
-        const whatsappRule = phoneValidationRules[whatsappCountryCode];
-        if (!whatsappRule || !whatsappRule.regex.test(whatsapp.replace(/\s+/g, ''))) {
-            showMessage(whatsappRule ? whatsappRule.message : 'الرجاء إدخال رقم واتساب صحيح', 'error');
-            return;
-        }
+    
+    if (!whatsappRule.regex.test(cleanWhatsapp)) {
+        showMessage(whatsappRule.message.replace('هاتف', 'واتساب'), 'error');
+        return;
     }
-
+}
     // Update progress
     document.getElementById('progressStep1').classList.add('completed');
     document.getElementById('progressStep1').classList.remove('active');
