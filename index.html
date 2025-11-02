@@ -2051,113 +2051,129 @@
             <div id="messageBox" class="message"></div>
 
             <form id="contactForm">
-    <!-- STEP 1: Personal Information -->
-<div class="form-step active" id="step1">
-    <div class="section-header">
-        <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px;">معلوماتك الشخصية</h3>
-    </div>
+                <!-- STEP 1: Personal Information -->
+                <div class="form-step active" id="step1">
+                    <div class="section-header">
+                        <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px;">معلوماتك الشخصية</h3>
+                    </div>
 
-<div class="form-group">
-  <label class="form-label" for="agent">
-    اختر اسم المستشار العقاري المسؤول عن متابعتك
-    <span class="required">*</span>
-  </label>
-  <select id="agent" name="agent" class="form-select" required>
-    <option value="" disabled selected>— اختر المستشار العقاري —</option>
-    <option value="غير متابع">غير متابع مع مستشار عقاري</option>
-    <optgroup label="الإدارة">
-      <option value="المدير العام">المدير العام (Owner)</option>
-    </optgroup>
-    <optgroup label="فريق المبيعات">
-      <option value="محمد ايمن">محمد أيمن</option>
-      <option value="ماركو ناصر">ماركو ناصر</option>
-      <option value="مريم رشاد">مريم رشاد</option>
-      <option value="ساندرا امجد">ساندرا أمجد</option>
-      <option value="كريستين مجدي">كريستين مجدي</option>
-      <option value="فاطمه ايهاب">فاطمة إيهاب</option>
-      <option value="ساره سعد">سارة سعد</option>
-      <option value="ايه فاروق">آية فاروق</option>
-      <option value="الاء حاتم">الاء حاتم</option>
-      <option value="امنه جمال">آمنة جمال</option>
-      <option value="ايه محمد">آية محمد</option>
-    </optgroup>
-  </select>
-</div>
+                    <div class="form-group">
+                        <label class="form-label" for="agent">
+                            اختر اسم المستشار العقاري المسؤول عن متابعتك
+                            <span class="required">*</span>
+                        </label>
+                        <select id="agent" name="agent" class="form-select" required>
+                            <option value="" disabled selected>— اختر المستشار العقاري —</option>
+                            <option value="غير متابع">غير متابع مع مستشار عقاري</option>
+                            <optgroup label="الإدارة">
+                                <option value="المدير العام">المدير العام (Owner)</option>
+                            </optgroup>
+                            <optgroup label="فريق المبيعات">
+                                <option value="محمد ايمن">محمد أيمن</option>
+                                <option value="ماركو ناصر">ماركو ناصر</option>
+                                <option value="مريم رشاد">مريم رشاد</option>
+                                <option value="ساندرا امجد">ساندرا أمجد</option>
+                                <option value="كريستين مجدي">كريستين مجدي</option>
+                                <option value="فاطمه ايهاب">فاطمة إيهاب</option>
+                                <option value="ساره سعد">سارة سعد</option>
+                                <option value="ايه فاروق">آية فاروق</option>
+                                <option value="الاء حاتم">الاء حاتم</option>
+                                <option value="امنه جمال">آمنة جمال</option>
+                                <option value="ايه محمد">آية محمد</option>
+                            </optgroup>
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
+                        <input type="text" 
+                               id="name" 
+                               name="name" 
+                               class="form-input" 
+                               placeholder="أدخل اسمك الكامل (عربي أو English)" 
+                               required>
+                    </div>
 
-    <div class="form-group">
-        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
-        <input type="text" id="name" name="name" class="form-input" placeholder="أدخل اسمك الكامل" required>
-    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
+                                    <option value="">كود الدولة</option>
+                                    <option value="+20" selected>مصر (+20)</option>
+                                    <option value="+966">السعودية (+966)</option>
+                                    <option value="+971">الإمارات (+971)</option>
+                                    <option value="+965">الكويت (+965)</option>
+                                    <option value="+974">قطر (+974)</option>
+                                    <option value="+968">عمان (+968)</option>
+                                    <option value="+973">البحرين (+973)</option>
+                                    <option value="+962">الأردن (+962)</option>
+                                    <option value="+961">لبنان (+961)</option>
+                                    <option value="+1">الولايات المتحدة (+1)</option>
+                                </select>
+                                <input type="tel" 
+                                       id="phone" 
+                                       name="phone" 
+                                       class="form-input" 
+                                       placeholder="أدخل رقم الهاتف" 
+                                       inputmode="numeric"
+                                       required>
+                            </div>
+                        </div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
-            <div style="display: flex; gap: 10px;">
-                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
-                    <option value="">كود الدولة</option>
-                    <option value="+20">مصر (+20)</option>
-                    <option value="+966">السعودية (+966)</option>
-                    <option value="+971">الإمارات (+971)</option>
-                    <option value="+965">الكويت (+965)</option>
-                    <option value="+974">قطر (+974)</option>
-                    <option value="+968">عمان (+968)</option>
-                    <option value="+973">البحرين (+973)</option>
-                    <option value="+962">الأردن (+962)</option>
-                    <option value="+961">لبنان (+961)</option>
-                    <option value="+1">الولايات المتحدة (+1)</option>
-                </select>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="أدخل رقم الهاتف" required>
-            </div>
-        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
+                                    <option value="">كود الدولة</option>
+                                    <option value="+20" selected>مصر (+20)</option>
+                                    <option value="+966">السعودية (+966)</option>
+                                    <option value="+971">الإمارات (+971)</option>
+                                    <option value="+965">الكويت (+965)</option>
+                                    <option value="+974">قطر (+974)</option>
+                                    <option value="+968">عمان (+968)</option>
+                                    <option value="+973">البحرين (+973)</option>
+                                    <option value="+962">الأردن (+962)</option>
+                                    <option value="+961">لبنان (+961)</option>
+                                    <option value="+1">الولايات المتحدة (+1)</option>
+                                </select>
+                                <input type="tel" 
+                                       id="whatsapp" 
+                                       name="whatsapp" 
+                                       class="form-input" 
+                                       placeholder="أدخل رقم الواتساب (اختياري)"
+                                       inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
-            <div style="display: flex; gap: 10px;">
-                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
-                    <option value="">كود الدولة</option>
-                    <option value="+20">مصر (+20)</option>
-                    <option value="+966">السعودية (+966)</option>
-                    <option value="+971">الإمارات (+971)</option>
-                    <option value="+965">الكويت (+965)</option>
-                    <option value="+974">قطر (+974)</option>
-                    <option value="+968">عمان (+968)</option>
-                    <option value="+973">البحرين (+973)</option>
-                    <option value="+962">الأردن (+962)</option>
-                    <option value="+961">لبنان (+961)</option>
-                    <option value="+1">الولايات المتحدة (+1)</option>
-                </select>
-                <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب (اختياري)">
-            </div>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label class="form-label">أنا <span class="required">*</span></label>
+                        <div class="category-grid">
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="seller" value="بائع">
+                                <label for="seller" class="category-label"><span>بائع</span></label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="buyer" value="مشتري">
+                                <label for="buyer" class="category-label"><span>مشتري</span></label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="renter" value="مستأجر">
+                                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="landlord" value="مؤجر">
+                                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        <label class="form-label">أنا <span class="required">*</span></label>
-        <div class="category-grid">
-            <div class="category-option">
-                <input type="radio" name="clientType" id="seller" value="بائع">
-                <label for="seller" class="category-label"><span>بائع</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="buyer" value="مشتري">
-                <label for="buyer" class="category-label"><span>مشتري</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="renter" value="مستأجر">
-                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="landlord" value="مؤجر">
-                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
-            </div>
-        </div>
-    </div>
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
+                    </div>
+                </div>
 
-    <div class="btn-container">
-        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
-    </div>
-</div>
                 <!-- STEP 2: Property Details -->
                 <div class="form-step" id="step2">
                     <div class="section-header">
@@ -2185,31 +2201,51 @@
 
                         <div class="form-group common-field">
                             <label class="form-label" for="area">المنطقة <span class="required">*</span></label>
-                            <input type="text" id="area" name="area" class="form-input" placeholder="مثال: المنطقة الأولى، أسيوط الجديدة">
+                            <input type="text" 
+                                   id="area" 
+                                   name="area" 
+                                   class="form-input" 
+                                   placeholder="مثال: المنطقة الأولى، أسيوط الجديدة، New Assiut">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group common-field">
                             <label class="form-label" for="space">المساحة (متر مربع) <span class="required">*</span></label>
-                            <input type="text" id="space" name="space" class="form-input" placeholder="مثال: 150 م">
+                            <input type="text" 
+                                   id="space" 
+                                   name="space" 
+                                   class="form-input" 
+                                   placeholder="مثال: 150 م أو 150 sqm">
                         </div>
 
                         <div class="form-group common-field">
                             <label class="form-label" for="rooms">عدد الغرف <span class="required">*</span></label>
-                            <input type="number" id="rooms" name="rooms" class="form-input" placeholder="3" min="0">
+                            <input type="text" 
+                                   id="rooms" 
+                                   name="rooms" 
+                                   class="form-input" 
+                                   placeholder="مثال: 3 غرف أو 3 rooms">
                         </div>
                     </div>
 
                     <div class="form-group common-field">
                         <label class="form-label" for="bathrooms">عدد الحمامات <span class="required">*</span></label>
-                        <input type="number" id="bathrooms" name="bathrooms" class="form-input" placeholder="2" min="1">
+                        <input type="text" 
+                               id="bathrooms" 
+                               name="bathrooms" 
+                               class="form-input" 
+                               placeholder="مثال: 2 حمام أو 2 bathrooms">
                     </div>
 
                     <!-- Seller Specific Fields -->
                     <div class="form-group seller-field" style="display: none;">
                         <label class="form-label" for="floor">الدور <span class="required">*</span></label>
-                        <input type="text" id="floor" name="floor" class="form-input" placeholder="مثال: الدور الثالث">
+                        <input type="text" 
+                               id="floor" 
+                               name="floor" 
+                               class="form-input" 
+                               placeholder="مثال: الدور الثالث أو 3rd Floor">
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
@@ -2227,7 +2263,11 @@
 
                     <div class="form-group seller-field" style="display: none;">
                         <label class="form-label" for="price">السعر المطلوب <span class="required">*</span></label>
-                        <input type="text" id="price" name="price" class="form-input" placeholder="مثال: 500,000 جنيه">
+                        <input type="text" 
+                               id="price" 
+                               name="price" 
+                               class="form-input" 
+                               placeholder="مثال: 500,000 جنيه أو 500k EGP">
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
@@ -2241,8 +2281,12 @@
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
-                       <label class="form-label" for="utilities">جاهزية المرافق <span class="required">*</span></label>
-                       <textarea id="utilities" name="utilities" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
+                        <label class="form-label" for="utilities">جاهزية المرافق <span class="required">*</span></label>
+                        <textarea id="utilities" 
+                                  name="utilities" 
+                                  class="form-textarea" 
+                                  placeholder="مثال: كهرباء، مياه، غاز طبيعي، Electricity, Water, Gas..." 
+                                  rows="3"></textarea>
                     </div>
 
                     <div class="form-group seller-field" style="display: none;">
@@ -2268,7 +2312,11 @@
                         <div class="form-row">
                             <div class="form-group seller-field">
                                 <label class="form-label" for="rentPeriodSeller">المدة المؤجرة</label>
-                                <input type="text" id="rentPeriodSeller" name="rentPeriodSeller" class="form-input" placeholder="مثال: سنة واحدة">
+                                <input type="text" 
+                                       id="rentPeriodSeller" 
+                                       name="rentPeriodSeller" 
+                                       class="form-input" 
+                                       placeholder="مثال: سنة واحدة أو 1 year">
                             </div>
 
                             <div class="form-group seller-field">
@@ -2281,7 +2329,11 @@
                     <!-- Buyer Specific Fields -->
                     <div class="form-group buyer-field" style="display: none;">
                         <label class="form-label" for="budget">الميزانية <span class="required">*</span></label>
-                        <input type="text" id="budget" name="budget" class="form-input" placeholder="مثال: من 500,000 إلى 700,000 جنيه">
+                        <input type="text" 
+                               id="budget" 
+                               name="budget" 
+                               class="form-input" 
+                               placeholder="مثال: من 500,000 إلى 700,000 جنيه">
                     </div>
 
                     <div class="form-group buyer-field" style="display: none;">
@@ -2338,7 +2390,11 @@
                     <!-- Renter Specific Fields -->
                     <div class="form-group renter-field" style="display: none;">
                         <label class="form-label" for="monthlyBudget">الميزانية الشهرية <span class="required">*</span></label>
-                        <input type="text" id="monthlyBudget" name="monthlyBudget" class="form-input" placeholder="مثال: من 2,000 إلى 3,000 جنيه">
+                        <input type="text" 
+                               id="monthlyBudget" 
+                               name="monthlyBudget" 
+                               class="form-input" 
+                               placeholder="مثال: من 2,000 إلى 3,000 جنيه">
                     </div>
 
                     <div class="form-group renter-field" style="display: none;">
@@ -2354,7 +2410,11 @@
                     <div class="form-row">
                         <div class="form-group renter-field" style="display: none;">
                             <label class="form-label" for="rentDuration">المدة المطلوبة <span class="required">*</span></label>
-                            <input type="text" id="rentDuration" name="rentDuration" class="form-input" placeholder="مثال: سنة واحدة">
+                            <input type="text" 
+                                   id="rentDuration" 
+                                   name="rentDuration" 
+                                   class="form-input" 
+                                   placeholder="مثال: سنة واحدة أو 1 year">
                         </div>
 
                         <div class="form-group renter-field" style="display: none;">
@@ -2365,7 +2425,11 @@
 
                     <div class="form-group renter-field" style="display: none;">
                         <label class="form-label" for="usagePurpose">الغرض من الاستخدام <span class="required">*</span></label>
-                        <input type="text" id="usagePurpose" name="usagePurpose" class="form-input" placeholder="مثال: سكن عائلي، مكتب...">
+                        <input type="text" 
+                               id="usagePurpose" 
+                               name="usagePurpose" 
+                               class="form-input" 
+                               placeholder="مثال: سكن عائلي، مكتب، Family home, Office...">
                     </div>
 
                     <div class="form-group renter-field" style="display: none;">
@@ -2384,7 +2448,11 @@
                     <!-- Landlord Specific Fields -->
                     <div class="form-group landlord-field" style="display: none;">
                         <label class="form-label" for="floorLandlord">الدور <span class="required">*</span></label>
-                        <input type="text" id="floorLandlord" name="floorLandlord" class="form-input" placeholder="مثال: الدور الثالث">
+                        <input type="text" 
+                               id="floorLandlord" 
+                               name="floorLandlord" 
+                               class="form-input" 
+                               placeholder="مثال: الدور الثالث أو 3rd Floor">
                     </div>
 
                     <div class="form-group landlord-field" style="display: none;">
@@ -2411,7 +2479,11 @@
 
                     <div class="form-group landlord-field" style="display: none;">
                         <label class="form-label" for="monthlyRent">الإيجار الشهري المطلوب <span class="required">*</span></label>
-                        <input type="text" id="monthlyRent" name="monthlyRent" class="form-input" placeholder="مثال: 3,000 جنيه شهرياً">
+                        <input type="text" 
+                               id="monthlyRent" 
+                               name="monthlyRent" 
+                               class="form-input" 
+                               placeholder="مثال: 3,000 جنيه شهرياً أو 3000 EGP/month">
                     </div>
 
                     <div class="form-group landlord-field" style="display: none;">
@@ -2421,13 +2493,21 @@
 
                     <div class="form-group landlord-field" style="display: none;">
                         <label class="form-label" for="utilitiesLandlord">جاهزية المرافق <span class="required">*</span></label>
-                        <textarea id="utilitiesLandlord" name="utilitiesLandlord" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
+                        <textarea id="utilitiesLandlord" 
+                                  name="utilitiesLandlord" 
+                                  class="form-textarea" 
+                                  placeholder="مثال: كهرباء، مياه، غاز طبيعي، Electricity, Water, Gas..." 
+                                  rows="3"></textarea>
                     </div>
 
                     <!-- Additional Notes -->
                     <div class="form-group common-field">
                         <label class="form-label" for="notes">ملاحظات إضافية</label>
-                        <textarea id="notes" name="notes" class="form-textarea" placeholder="أي معلومات إضافية تود مشاركتها معنا..." rows="3"></textarea>
+                        <textarea id="notes" 
+                                  name="notes" 
+                                  class="form-textarea" 
+                                  placeholder="أي معلومات إضافية تود مشاركتها معنا... (عربي أو English)" 
+                                  rows="3"></textarea>
                     </div>
 
                     <!-- Terms & Conditions -->
@@ -2599,7 +2679,7 @@ function loadMap() {
     
     const mapContainer = document.getElementById('mapContainer');
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890';
+    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890';
     iframe.allowFullscreen = true;
     iframe.loading = 'lazy';
     iframe.referrerPolicy = 'no-referrer-when-downgrade';
@@ -2628,7 +2708,7 @@ if (locationSection) {
 }
 
 // =====================================================
-// 3. MENU FUNCTIONS
+// 4. MENU FUNCTIONS
 // =====================================================
 function toggleMenu() {
     const navMenu = document.getElementById('navMenu');
@@ -2680,7 +2760,7 @@ if (hamburger) {
 }
 
 // =====================================================
-// 4. SMOOTH SCROLL
+// 5. SMOOTH SCROLL
 // =====================================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -2693,7 +2773,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // =====================================================
-// 5. MODAL FUNCTIONS
+// 6. MODAL FUNCTIONS
 // =====================================================
 function openTermsModal() {
     document.getElementById('termsModal').classList.add('active');
@@ -2712,15 +2792,18 @@ function acceptTerms() {
 
 // Close modal when clicking outside
 window.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('termsModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeTermsModal();
-        }
-    });
+    const modal = document.getElementById('termsModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTermsModal();
+            }
+        });
+    }
 });
 
 // =====================================================
-// 6. FORM STEP NAVIGATION
+// 7. FORM STEP NAVIGATION
 // =====================================================
 function goToStep2() {
     const name = document.getElementById('name').value.trim();
@@ -2737,47 +2820,47 @@ function goToStep2() {
         return;
     }
 
-// Phone number validation based on country code
-const phoneValidationRules = {
-    '+20': { 
-        regex: /^(0?(10|11|12|15)\d{8})$/, 
-        digits: '10 أو 11', 
-        message: 'الرجاء إدخال رقم هاتف مصري صحيح (10 أرقام مثل 1012345678 أو 11 رقم مثل 01012345678)' 
-    },
-    '+966': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف سعودي صحيح (9 أرقام)' },
-    '+971': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف إماراتي صحيح (9 أرقام)' },
-    '+965': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف كويتي صحيح (8 أرقام)' },
-    '+974': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف قطري صحيح (8 أرقام)' },
-    '+968': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف عماني صحيح (8 أرقام)' },
-    '+973': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف بحريني صحيح (8 أرقام)' },
-    '+962': { regex: /^\d{9}$/, digits: 9, message: 'الرجاء إدخال رقم هاتف أردني صحيح (9 أرقام)' },
-    '+961': { regex: /^\d{8}$/, digits: 8, message: 'الرجاء إدخال رقم هاتف لبناني صحيح (8 أرقام)' },
-    '+1': { regex: /^\d{10}$/, digits: 10, message: 'الرجاء إدخال رقم هاتف أمريكي صحيح (10 أرقام)' }
-};
+    // Phone number validation based on country code
+    const phoneValidationRules = {
+        '+20': { 
+            regex: /^(0?(10|11|12|15)\d{8})$/, 
+            message: 'الرجاء إدخال رقم هاتف مصري صحيح (10 أرقام مثل 1012345678 أو 11 رقم مثل 01012345678)' 
+        },
+        '+966': { regex: /^\d{9}$/, message: 'الرجاء إدخال رقم هاتف سعودي صحيح (9 أرقام)' },
+        '+971': { regex: /^\d{9}$/, message: 'الرجاء إدخال رقم هاتف إماراتي صحيح (9 أرقام)' },
+        '+965': { regex: /^\d{8}$/, message: 'الرجاء إدخال رقم هاتف كويتي صحيح (8 أرقام)' },
+        '+974': { regex: /^\d{8}$/, message: 'الرجاء إدخال رقم هاتف قطري صحيح (8 أرقام)' },
+        '+968': { regex: /^\d{8}$/, message: 'الرجاء إدخال رقم هاتف عماني صحيح (8 أرقام)' },
+        '+973': { regex: /^\d{8}$/, message: 'الرجاء إدخال رقم هاتف بحريني صحيح (8 أرقام)' },
+        '+962': { regex: /^\d{9}$/, message: 'الرجاء إدخال رقم هاتف أردني صحيح (9 أرقام)' },
+        '+961': { regex: /^\d{8}$/, message: 'الرجاء إدخال رقم هاتف لبناني صحيح (8 أرقام)' },
+        '+1': { regex: /^\d{10}$/, message: 'الرجاء إدخال رقم هاتف أمريكي صحيح (10 أرقام)' }
+    };
 
-// Phone validation
-const cleanPhone = phone.replace(/\s+/g, '');
-const phoneRule = phoneValidationRules[phoneCountryCode];
-if (!phoneRule || !phoneRule.regex.test(cleanPhone)) {
-    showMessage(phoneRule ? phoneRule.message : 'الرجاء إدخال رقم هاتف صحيح', 'error');
-    return;
-}
-
-// WhatsApp number validation (اختياري - فقط لو المستخدم دخل رقم)
-if (whatsapp && whatsappCountryCode) {
-    const cleanWhatsapp = whatsapp.replace(/\s+/g, '');
-    const whatsappRule = phoneValidationRules[whatsappCountryCode];
-    
-    if (!whatsappRule) {
-        showMessage('الرجاء إدخال رقم واتساب صحيح', 'error');
+    // Phone validation
+    const cleanPhone = phone.replace(/\s+/g, '');
+    const phoneRule = phoneValidationRules[phoneCountryCode];
+    if (!phoneRule || !phoneRule.regex.test(cleanPhone)) {
+        showMessage(phoneRule ? phoneRule.message : 'الرجاء إدخال رقم هاتف صحيح', 'error');
         return;
     }
-    
-    if (!whatsappRule.regex.test(cleanWhatsapp)) {
-        showMessage(whatsappRule.message.replace('هاتف', 'واتساب'), 'error');
-        return;
+
+    // WhatsApp number validation (اختياري - فقط لو المستخدم دخل رقم)
+    if (whatsapp && whatsappCountryCode) {
+        const cleanWhatsapp = whatsapp.replace(/\s+/g, '');
+        const whatsappRule = phoneValidationRules[whatsappCountryCode];
+        
+        if (!whatsappRule) {
+            showMessage('الرجاء إدخال رقم واتساب صحيح', 'error');
+            return;
+        }
+        
+        if (!whatsappRule.regex.test(cleanWhatsapp)) {
+            showMessage(whatsappRule.message.replace('هاتف', 'واتساب'), 'error');
+            return;
+        }
     }
-}
+
     // Update progress
     document.getElementById('progressStep1').classList.add('completed');
     document.getElementById('progressStep1').classList.remove('active');
@@ -2808,7 +2891,7 @@ function goToStep1() {
 }
 
 // =====================================================
-// 7. DYNAMIC FORM FIELDS
+// 8. DYNAMIC FORM FIELDS
 // =====================================================
 function updateFormFields() {
     const clientType = document.querySelector('input[name="clientType"]:checked');
@@ -2861,8 +2944,9 @@ function toggleSellerRentDetails(select) {
         rentDetails.style.display = 'none';
     }
 }
+
 // =====================================================
-// 8. MESSAGE DISPLAY
+// 9. MESSAGE DISPLAY
 // =====================================================
 function showMessage(text, type) {
     const messageBox = document.getElementById('messageBox');
@@ -2874,8 +2958,9 @@ function showMessage(text, type) {
         messageBox.style.display = 'none';
     }, 5000);
 }
+
 // =====================================================
-// 9. FORM SUBMISSION
+// 10. FORM SUBMISSION
 // =====================================================
 const form = document.getElementById('contactForm');
 
@@ -2892,12 +2977,17 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // Collect form data
+    // Collect form data with country codes
+    const phoneCountryCode = document.getElementById('phoneCountryCode').value;
+    const whatsappCountryCode = document.getElementById('whatsappCountryCode').value;
+    const phone = document.getElementById('phone').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+
     const formData = {
         agent: document.getElementById('agent').value,
         name: document.getElementById('name').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        whatsapp: document.getElementById('whatsapp').value.trim(),
+        phone: phoneCountryCode + phone,
+        whatsapp: whatsapp ? (whatsappCountryCode + whatsapp) : '',
         clientType: clientType ? clientType.value : '',
         unitType: document.getElementById('unitType').value,
         area: document.getElementById('area').value.trim(),
