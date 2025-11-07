@@ -222,7 +222,12 @@ body {
     margin-bottom: 20px;
     flex-wrap: nowrap;
     justify-content: center;
-    overflow-x: auto; 
+    overflow-x: hidden; /* ✅ نمنع أي Scroll فعلي */
+}
+
+.hero-feature {
+    flex-shrink: 1; /* ✅ يخليها تتقلص حسب العرض */
+    min-width: 0;   /* ✅ يمنعها من إجبار العرض */
 }
 
 .hero-feature {
@@ -1608,32 +1613,12 @@ footer p {
 
 @media (max-width: 480px) {
     .hero-features {
-        gap: 5px;
-        padding: 0 8px;
-    }
-    
-    .hero-feature {
-        padding: 6px 8px;
         gap: 4px;
-    }
-    
-    .hero-feature i {
-        font-size: 11px;
-    }
-    
-    .hero-feature span {
-        font-size: 7.5px; /* ⬅️ أصغر */
-    }
-}
-
-@media (max-width: 380px) {
-    .hero-features {
-        gap: 2px;
-        padding: 0 2px;
+        padding: 0 6px;
     }
     
     .hero-feature {
-        padding: 3px 5px;
+        padding: 4px 6px;
         gap: 2px;
     }
     
@@ -1642,23 +1627,47 @@ footer p {
     }
     
     .hero-feature span {
-        font-size: 6.5px; /* ⬅️ أصغر لتفادي أي Scroll */
+        font-size: 6.5px;
     }
 }
 
-/* ✅ أدق ضبط لأصغر الموبايلات (زي 320px أو أقل) */
+@media (max-width: 380px) {
+    .hero-features {
+        gap: 2px;
+        padding: 0 3px;
+    }
+    
+    .hero-feature {
+        padding: 3px 5px;
+        gap: 1px;
+    }
+    
+    .hero-feature i {
+        font-size: 8px;
+    }
+    
+    .hero-feature span {
+        font-size: 5.5px;
+    }
+}
+
 @media (max-width: 340px) {
+    .hero-features {
+        gap: 1px;
+        padding: 0 2px;
+    }
+    
     .hero-feature {
         padding: 2px 4px;
         gap: 1px;
     }
-
+    
     .hero-feature i {
-        font-size: 8px;
+        font-size: 7px;
     }
-
+    
     .hero-feature span {
-        font-size: 5.5px; /* ⬅️ صغير جدًا يمنع أي Scroll */
+        font-size: 5px;
     }
 }
 
