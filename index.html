@@ -1614,17 +1614,35 @@ footer p {
     }
 }
 
-/* موبايلات صغيرة */
 @media (max-width: 480px) {
     .hero-features {
-        gap: 3px;
+        gap: 4px;
+        padding: 0 6px;
+    }
+    
+    .hero-feature {
+        padding: 4px 6px;
+        gap: 2px;
+    }
+    
+    .hero-feature i {
+        font-size: 9px;
+    }
+    
+    .hero-feature span {
+        font-size: 6.5px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-features {
+        gap: 2px;
         padding: 0 3px;
     }
     
     .hero-feature {
         padding: 3px 5px;
-        gap: 2px;
-        max-width: 70px; /* ✅ أصغر */
+        gap: 1px;
     }
     
     .hero-feature i {
@@ -1636,17 +1654,15 @@ footer p {
     }
 }
 
-/* موبايلات أصغر جدًا */
-@media (max-width: 380px) {
+@media (max-width: 340px) {
     .hero-features {
-        gap: 2px;
+        gap: 1px;
         padding: 0 2px;
     }
     
     .hero-feature {
         padding: 2px 4px;
         gap: 1px;
-        max-width: 60px; /* ✅ تقلص أكتر */
     }
     
     .hero-feature i {
@@ -1654,29 +1670,7 @@ footer p {
     }
     
     .hero-feature span {
-        font-size: 4.5px;
-    }
-}
-
-/* أصغر من 340px */
-@media (max-width: 340px) {
-    .hero-features {
-        gap: 1px;
-        padding: 0 1px;
-    }
-    
-    .hero-feature {
-        padding: 2px 3px;
-        gap: 1px;
-        max-width: 55px; /* ✅ أصغر عرض ممكن */
-    }
-    
-    .hero-feature i {
-        font-size: 6px;
-    }
-    
-    .hero-feature span {
-        font-size: 4px;
+        font-size: 5px;
     }
 }
 
