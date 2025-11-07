@@ -218,16 +218,19 @@ body {
 /* Hero Features */
 .hero-features {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 15px;
     flex-wrap: nowrap;
     justify-content: center;
-    overflow-x: hidden; /* ✅ نمنع أي Scroll فعلي */
+    overflow-x: hidden; /* ✅ منع أي Scroll */
+    padding: 0 4px; /* ✅ مساحة صغيرة من الجانبين */
 }
 
 .hero-feature {
-    flex-shrink: 1; /* ✅ يخليها تتقلص حسب العرض */
-    min-width: 0;   /* ✅ يمنعها من إجبار العرض */
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 80px; /* ✅ محدد عرض كل عنصر */
+    text-align: center;
 }
 
 .hero-feature {
@@ -1611,35 +1614,17 @@ footer p {
     }
 }
 
+/* موبايلات صغيرة */
 @media (max-width: 480px) {
     .hero-features {
-        gap: 4px;
-        padding: 0 6px;
-    }
-    
-    .hero-feature {
-        padding: 4px 6px;
-        gap: 2px;
-    }
-    
-    .hero-feature i {
-        font-size: 9px;
-    }
-    
-    .hero-feature span {
-        font-size: 6.5px;
-    }
-}
-
-@media (max-width: 380px) {
-    .hero-features {
-        gap: 2px;
+        gap: 3px;
         padding: 0 3px;
     }
     
     .hero-feature {
         padding: 3px 5px;
-        gap: 1px;
+        gap: 2px;
+        max-width: 70px; /* ✅ أصغر */
     }
     
     .hero-feature i {
@@ -1651,15 +1636,17 @@ footer p {
     }
 }
 
-@media (max-width: 340px) {
+/* موبايلات أصغر جدًا */
+@media (max-width: 380px) {
     .hero-features {
-        gap: 1px;
+        gap: 2px;
         padding: 0 2px;
     }
     
     .hero-feature {
         padding: 2px 4px;
         gap: 1px;
+        max-width: 60px; /* ✅ تقلص أكتر */
     }
     
     .hero-feature i {
@@ -1667,7 +1654,29 @@ footer p {
     }
     
     .hero-feature span {
-        font-size: 5px;
+        font-size: 4.5px;
+    }
+}
+
+/* أصغر من 340px */
+@media (max-width: 340px) {
+    .hero-features {
+        gap: 1px;
+        padding: 0 1px;
+    }
+    
+    .hero-feature {
+        padding: 2px 3px;
+        gap: 1px;
+        max-width: 55px; /* ✅ أصغر عرض ممكن */
+    }
+    
+    .hero-feature i {
+        font-size: 6px;
+    }
+    
+    .hero-feature span {
+        font-size: 4px;
     }
 }
 
