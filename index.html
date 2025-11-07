@@ -222,7 +222,12 @@ body {
     margin-bottom: 20px;
     flex-wrap: nowrap;
     justify-content: center;
-    overflow-x: auto; 
+    overflow-x: hidden; /* ✅ نمنع أي Scroll فعلي */
+}
+
+.hero-feature {
+    flex-shrink: 1; /* ✅ يخليها تتقلص حسب العرض */
+    min-width: 0;   /* ✅ يمنعها من إجبار العرض */
 }
 
 .hero-feature {
