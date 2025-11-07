@@ -218,19 +218,16 @@ body {
 /* Hero Features */
 .hero-features {
     display: flex;
-    gap: 6px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
     flex-wrap: nowrap;
     justify-content: center;
-    overflow-x: hidden; /* ✅ منع أي Scroll */
-    padding: 0 4px; /* ✅ مساحة صغيرة من الجانبين */
+    overflow-x: hidden; /* ✅ نمنع أي Scroll فعلي */
 }
 
 .hero-feature {
-    flex-shrink: 1;
-    min-width: 0;
-    max-width: 80px; /* ✅ محدد عرض كل عنصر */
-    text-align: center;
+    flex-shrink: 1; /* ✅ يخليها تتقلص حسب العرض */
+    min-width: 0;   /* ✅ يمنعها من إجبار العرض */
 }
 
 .hero-feature {
