@@ -218,37 +218,29 @@ body {
 /* Hero Features */
 .hero-features {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-    flex-wrap: nowrap;
-    justify-content: center;
-    overflow-x: auto; 
+    overflow-x: hidden; 
+    flex-wrap: wrap; 
 }
 
+/* كل Feature */
 .hero-feature {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.15);
     padding: 10px 15px;
     border-radius: 25px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
     flex-shrink: 0; 
-    white-space: nowrap;
 }
 
-.hero-feature i {
-    font-size: 16px;
-    color: #E31E24;
-    flex-shrink: 0;
-}
-
-.hero-feature span {
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-}
 
 /* Social Icons */
 .social-icons {
@@ -1615,6 +1607,9 @@ footer p {
     .hero-feature {
         padding: 7px 9px;
         gap: 5px;
+        flex: 1 1 auto;
+        max-width: calc(33.33% - 10px);
+        text-align: center;
     }
     
     .hero-feature i {
@@ -1635,6 +1630,7 @@ footer p {
     .hero-feature {
         padding: 5px 7px;
         gap: 4px;
+        max-width: calc(33.33% - 6px);
     }
     
     .hero-feature i {
@@ -1646,10 +1642,12 @@ footer p {
     }
 }
 
+
 @media (max-width: 340px) {
     .hero-feature {
         padding: 4px 6px;
         gap: 3px;
+        max-width: calc(33.33% - 4px);
     }
 
     .hero-feature i {
@@ -1662,7 +1660,7 @@ footer p {
 }
 
 
-/* Tablet View (769px to 1024px) */
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .hero-container {
         max-width: 800px;
