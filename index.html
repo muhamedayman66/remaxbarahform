@@ -233,6 +233,8 @@ body {
     border-radius: 25px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    flex: 0 1 auto; /* هنا التعديل المهم */
+    min-width: fit-content; /* عشان ياخد المساحة اللي يحتاجها بس */
 }
 
 .hero-feature i {
@@ -243,6 +245,7 @@ body {
 .hero-feature span {
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap; /* عشان النص ما ينزلش سطر تاني */
 }
 
 /* Social Icons */
