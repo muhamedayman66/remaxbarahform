@@ -179,7 +179,7 @@ body {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 15px 30px;
+    padding: 20px;
     flex: 1;
     overflow-y: visible;
 }
@@ -1113,30 +1113,40 @@ body {
     overflow: hidden;
 }
 
+/* ✅ تعديل الجزء المطلوب */
 .form-card-header {
     background: transparent;
-    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 50px 20px 20px; /* تحكم بالـ padding هنا */
 }
 
 .form-card-title {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 900;
     color: #fff;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .form-card-subtitle {
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffff !important;
 }
 
+/* ✅ جعل progress bar في المنتصف تماماً */
 .progress-container-hero {
     background: transparent;
-    padding: 10px 15px 60px 15px !important;
+    padding: 20px 15px 40px 15px !important;
     position: relative;
     border-bottom: none;
     margin-bottom: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .progress-container-hero .progress-bar {
@@ -1144,6 +1154,8 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    width: 60%;
+    min-width: 260px;
 }
 
 .progress-container-hero .step-circle {
