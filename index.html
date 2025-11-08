@@ -2048,6 +2048,134 @@ footer p {
         font-size: 13px;
     }
 }
+/* =====================================================
+   SUCCESS/ERROR MODAL
+===================================================== */
+.confirmation-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    animation: fadeIn 0.3s ease;
+}
+
+.confirmation-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-modal-content {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.4s ease;
+    position: relative;
+}
+
+.confirmation-icon {
+    font-size: 70px;
+    margin-bottom: 20px;
+    animation: bounceIn 0.6s ease;
+}
+
+.confirmation-icon.success {
+    color: #28a745;
+}
+
+.confirmation-icon.error {
+    color: #dc3545;
+}
+
+.confirmation-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.confirmation-message {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.confirmation-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 61, 165, 0.3);
+}
+
+.confirmation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 61, 165, 0.4);
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Time Picker Styling */
+.time-picker-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e8ecef;
+    border-radius: 12px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+    font-family: inherit;
+    color: #000000;
+    text-align: center;
+    font-weight: 600;
+}
+
+.time-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 61, 165, 0.08);
+    transform: translateY(-2px);
+}
+
+.time-separator {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+}
     </style>
 </head>
 <body>
@@ -2138,130 +2266,179 @@ footer p {
                     <div id="messageBox" class="message"></div>
 
                     <form id="contactForm">
-                        <!-- STEP 1 -->
-                        <div class="form-step active" id="step1">
-                            <div class="form-group">
-                                <label class="form-label" for="agent">
-                                    المستشار العقاري <span class="required">*</span>
-                                </label>
-                                <select id="agent" name="agent" class="form-select" required>
-                                    <option value="" disabled selected>-- اختار المستشار العقاري --</option>
-                                    <option value="غير متابع">غير متابع مع مستشار عقاري</option>
-                                    <optgroup label="الإدارة">
-                                        <option value="المدير العام">المدير العام</option>
-                                    </optgroup>
-                                    <optgroup label="فريق المبيعات">
-                                        <option value="محمد ايمن">محمد أيمن</option>
-                                        <option value="ماركو ناصر">ماركو ناصر</option>
-                                        <option value="مريم رشاد">مريم رشاد</option>
-                                        <option value="ساندرا امجد">ساندرا أمجد</option>
-                                        <option value="كريستين مجدي">كريستين مجدي</option>
-                                        <option value="فاطمه ايهاب">فاطمة إيهاب</option>
-                                        <option value="ساره سعد">سارة سعد</option>
-                                        <option value="ايه فاروق">آية فاروق</option>
-                                        <option value="الاء حاتم">الاء حاتم</option>
-                                        <option value="امنه جمال">آمنة جمال</option>
-                                        <option value="ايه محمد">آية محمد</option>
-                                    </optgroup>
-                                </select>
-                            </div>
+                      <!-- STEP 1 -->
+<div class="form-step active" id="step1">
+    <div class="form-group">
+        <label class="form-label" for="agent">
+            المستشار العقاري <span class="required">*</span>
+        </label>
+        <select id="agent" name="agent" class="form-select" required>
+            <option value="" disabled selected>-- اختار المستشار العقاري --</option>
+            <option value="غير متابع">غير متابع مع مستشار عقاري</option>
+            <optgroup label="الإدارة">
+                <option value="المدير العام">المدير العام</option>
+            </optgroup>
+            <optgroup label="فريق المبيعات">
+                <option value="محمد ايمن">محمد أيمن</option>
+                <option value="ماركو ناصر">ماركو ناصر</option>
+                <option value="مريم رشاد">مريم رشاد</option>
+                <option value="ساندرا امجد">ساندرا أمجد</option>
+                <option value="كريستين مجدي">كريستين مجدي</option>
+                <option value="فاطمه ايهاب">فاطمة إيهاب</option>
+                <option value="ساره سعد">سارة سعد</option>
+                <option value="ايه فاروق">آية فاروق</option>
+                <option value="الاء حاتم">الاء حاتم</option>
+                <option value="امنه جمال">آمنة جمال</option>
+                <option value="ايه محمد">آية محمد</option>
+            </optgroup>
+        </select>
+    </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
-                        <input type="text" 
-                               id="name" 
-                               name="name" 
-                               class="form-input" 
-                               placeholder="أدخل اسمك الكامل" 
-                               required>
-                    </div>
+    <div class="form-group">
+        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
+        <input type="text" 
+               id="name" 
+               name="name" 
+               class="form-input" 
+               placeholder="أدخل اسمك الكامل" 
+               required>
+    </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
-                            <div style="display: flex; gap: 10px;">
-                                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
-                                    <option value="">كود الدولة</option>
-                                    <option value="+20" selected>مصر (+20)</option>
-                                    <option value="+966">السعودية (+966)</option>
-                                    <option value="+971">الإمارات (+971)</option>
-                                    <option value="+965">الكويت (+965)</option>
-                                    <option value="+974">قطر (+974)</option>
-                                    <option value="+968">عمان (+968)</option>
-                                    <option value="+973">البحرين (+973)</option>
-                                    <option value="+962">الأردن (+962)</option>
-                                    <option value="+961">لبنان (+961)</option>
-                                    <option value="+1">الولايات المتحدة (+1)</option>
-                                </select>
-                                <input type="tel" 
-                                       id="phone" 
-                                       name="phone" 
-                                       class="form-input" 
-                                       placeholder="أدخل رقم الهاتف" 
-                                       inputmode="numeric"
-                                       required>
-                            </div>
-                        </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
+            <div style="display: flex; gap: 10px;">
+                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
+                    <option value="">كود الدولة</option>
+                    <option value="+20" selected>مصر (+20)</option>
+                    <option value="+966">السعودية (+966)</option>
+                    <option value="+971">الإمارات (+971)</option>
+                    <option value="+965">الكويت (+965)</option>
+                    <option value="+974">قطر (+974)</option>
+                    <option value="+968">عمان (+968)</option>
+                    <option value="+973">البحرين (+973)</option>
+                    <option value="+962">الأردن (+962)</option>
+                    <option value="+961">لبنان (+961)</option>
+                    <option value="+1">الولايات المتحدة (+1)</option>
+                </select>
+                <input type="tel" 
+                       id="phone" 
+                       name="phone" 
+                       class="form-input" 
+                       placeholder="أدخل رقم الهاتف" 
+                       inputmode="numeric"
+                       required>
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
-                            <div style="display: flex; gap: 10px;">
-                                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
-                                    <option value="">كود الدولة</option>
-                                    <option value="+20" selected>مصر (+20)</option>
-                                    <option value="+966">السعودية (+966)</option>
-                                    <option value="+971">الإمارات (+971)</option>
-                                    <option value="+965">الكويت (+965)</option>
-                                    <option value="+974">قطر (+974)</option>
-                                    <option value="+968">عمان (+968)</option>
-                                    <option value="+973">البحرين (+973)</option>
-                                    <option value="+962">الأردن (+962)</option>
-                                    <option value="+961">لبنان (+961)</option>
-                                    <option value="+1">الولايات المتحدة (+1)</option>
-                                </select>
-                                <input type="tel" 
-                                       id="whatsapp" 
-                                       name="whatsapp" 
-                                       class="form-input" 
-                                       placeholder="أدخل رقم الواتساب (اختياري)"
-                                       inputmode="numeric">
-                            </div>
-                        </div>
-                    </div>
+        <div class="form-group">
+            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
+            <div style="display: flex; gap: 10px;">
+                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
+                    <option value="">كود الدولة</option>
+                    <option value="+20" selected>مصر (+20)</option>
+                    <option value="+966">السعودية (+966)</option>
+                    <option value="+971">الإمارات (+971)</option>
+                    <option value="+965">الكويت (+965)</option>
+                    <option value="+974">قطر (+974)</option>
+                    <option value="+968">عمان (+968)</option>
+                    <option value="+973">البحرين (+973)</option>
+                    <option value="+962">الأردن (+962)</option>
+                    <option value="+961">لبنان (+961)</option>
+                    <option value="+1">الولايات المتحدة (+1)</option>
+                </select>
+                <input type="tel" 
+                       id="whatsapp" 
+                       name="whatsapp" 
+                       class="form-input" 
+                       placeholder="أدخل رقم الواتساب (اختياري)"
+                       inputmode="numeric">
+            </div>
+        </div>
+    </div>
 
-                    <div class="form-group">
-                        <label class="form-label">أنا <span class="required">*</span></label>
-                        <div class="category-grid">
-                            <div class="category-option">
-                                <input type="radio" name="clientType" id="seller" value="بائع">
-                                <label for="seller" class="category-label"><span>بائع</span></label>
-                            </div>
-                            <div class="category-option">
-                                <input type="radio" name="clientType" id="buyer" value="مشتري">
-                                <label for="buyer" class="category-label"><span>مشتري</span></label>
-                            </div>
-                            <div class="category-option">
-                                <input type="radio" name="clientType" id="renter" value="مستأجر">
-                                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
-                            </div>
-                            <div class="category-option">
-                                <input type="radio" name="clientType" id="landlord" value="مؤجر">
-                                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
-                            </div>
-                        </div>
-                    </div>
+    <div class="form-group">
+        <label class="form-label">أنا <span class="required">*</span></label>
+        <div class="category-grid">
+            <div class="category-option">
+                <input type="radio" name="clientType" id="seller" value="بائع">
+                <label for="seller" class="category-label"><span>بائع</span></label>
+            </div>
+            <div class="category-option">
+                <input type="radio" name="clientType" id="buyer" value="مشتري">
+                <label for="buyer" class="category-label"><span>مشتري</span></label>
+            </div>
+            <div class="category-option">
+                <input type="radio" name="clientType" id="renter" value="مستأجر">
+                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
+            </div>
+            <div class="category-option">
+                <input type="radio" name="clientType" id="landlord" value="مؤجر">
+                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
+            </div>
+        </div>
+    </div>
 
-                    <div class="btn-container">
-                        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
-                    </div>
-                </div>
+    <!-- NEW: Contact Method -->
+    <div class="form-group">
+        <label class="form-label">تفضل التواصل عبر (اختياري)</label>
+        <div class="category-grid">
+            <div class="category-option">
+                <input type="radio" name="contactMethod" id="contactPhone" value="هاتفياً">
+                <label for="contactPhone" class="category-label"><span>📞 هاتفياً</span></label>
+            </div>
+            <div class="category-option">
+                <input type="radio" name="contactMethod" id="contactWhatsapp" value="واتساب">
+                <label for="contactWhatsapp" class="category-label"><span>💬 واتساب</span></label>
+            </div>
+        </div>
+    </div>
 
-                <!-- STEP 2: Property Details -->
-                <div class="form-step" id="step2">
-              <div class="section-header">
-    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff !important; margin-bottom: 6px;">تفاصيل العقار</h3>
-    <p style="color: #ffffff !important; font-size: 13px;">أخبرنا المزيد عن احتياجاتك العقارية</p>
+    <!-- NEW: Preferred Contact Time -->
+    <div class="form-group">
+        <label class="form-label">الوقت المفضل للتواصل (اختياري)</label>
+        <div class="time-picker-container">
+            <select id="preferredHour" name="preferredHour" class="time-select">
+                <option value="">الساعة</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">01</option>
+                <option value="14">02</option>
+                <option value="15">03</option>
+                <option value="16">04</option>
+                <option value="17">05</option>
+                <option value="18">06</option>
+                <option value="19">07</option>
+                <option value="20">08</option>
+            </select>
+            <span class="time-separator">:</span>
+            <select id="preferredMinute" name="preferredMinute" class="time-select">
+                <option value="">الدقيقة</option>
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+            <select id="preferredPeriod" name="preferredPeriod" class="time-select">
+                <option value="">صباحاً/مساءً</option>
+                <option value="صباحاً">صباحاً</option>
+                <option value="مساءً">مساءً</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
+    </div>
 </div>
+                <!-- STEP 2: Property Details -->
+            <div class="form-step" id="step2">
+              <div class="section-header">
+              <h3 style="font-size: 20px; font-weight: 700; color: #ffffff !important; margin-bottom: 6px;">تفاصيل العقار</h3>
+              <p style="color: #ffffff !important; font-size: 13px;">أخبرنا المزيد عن احتياجاتك العقارية</p>
+            </div>
 
                     <!-- Common Fields -->
                     <div class="form-row">
@@ -2857,6 +3034,17 @@ footer p {
         </div>
     </div>
 </div>
+<!-- =====================================================
+     CONFIRMATION MODAL
+===================================================== -->
+<div id="confirmationModal" class="confirmation-modal">
+    <div class="confirmation-modal-content">
+        <div class="confirmation-icon" id="confirmationIcon">✓</div>
+        <h3 class="confirmation-title" id="confirmationTitle">تم بنجاح!</h3>
+        <p class="confirmation-message" id="confirmationMessage">تم إرسال طلبك بنجاح</p>
+        <button class="confirmation-btn" onclick="closeConfirmationModal()">فهمت، شكراً</button>
+    </div>
+</div>
 
 <!-- =====================================================
      FOOTER
@@ -2882,7 +3070,7 @@ footer p {
 // =====================================================
 // 1. CONFIGURATION & CONSTANTS
 // =====================================================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGqYr_wDkm7dT35xhh7AGtDjfhfKLVbdV03r5EyqjSolVNHsQVKUvrVkB13cHSjehNcg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhfvp-HI3POFWew22YGIfQkQ--TqIFw-f6baIQoS1jlC3IwUnAHGNc5iG_VtRZpKvy8w/exec';
 
 // =====================================================
 // 2. PERFORMANCE OPTIMIZATION
@@ -3076,6 +3264,12 @@ function goToStep2() {
     const whatsappCountryCode = document.getElementById('whatsappCountryCode').value;
     const agent = document.getElementById('agent').value;
     const clientType = document.querySelector('input[name="clientType"]:checked');
+    
+    // NEW: Contact Method & Time
+    const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
+    const preferredHour = document.getElementById('preferredHour').value;
+    const preferredMinute = document.getElementById('preferredMinute').value;
+    const preferredPeriod = document.getElementById('preferredPeriod').value;
 
     // ================================
     // Validation - Required fields only
@@ -3108,6 +3302,15 @@ function goToStep2() {
         showMessage('الرجاء اختيار نوع العميل (بائع، مشتري، مؤجر، مستأجر)', 'error');
         document.querySelector('input[name="clientType"]').focus();
         return;
+    }
+
+    // NEW: Check if WhatsApp is selected but number is missing
+    if (contactMethod && contactMethod.value === 'واتساب') {
+        if (!whatsapp || !whatsappCountryCode) {
+            showMessage('⚠️ يجب إدخال رقم الواتساب إذا اخترت التواصل عبر الواتساب', 'error');
+            document.getElementById('whatsapp').focus();
+            return;
+        }
     }
 
     // ================================
@@ -3167,16 +3370,6 @@ function goToStep2() {
     document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth' });
 }
 
-function goToStep1() {
-    document.getElementById('progressStep2').classList.remove('active');
-    document.getElementById('progressStep1').classList.remove('completed');
-    document.getElementById('progressStep1').classList.add('active');
-    document.getElementById('progressFill').style.width = '0%';
-    document.getElementById('step2').classList.remove('active');
-    document.getElementById('step1').classList.add('active');
-    document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth' });
-}
-
 // =====================================================
 // 8. DYNAMIC FORM FIELDS
 // =====================================================
@@ -3219,8 +3412,38 @@ function showMessage(text, type) {
     messageBox.textContent = text;
     messageBox.className = `message ${type}`;
     messageBox.style.display = 'block';
-    setTimeout(() => messageBox.style.display = 'none', 6000);
+    
+    // رسائل الخطأ تبقى ظاهرة حتى يتفاعل المستخدم
+    if (type === 'error') {
+        // لا نخفي الرسالة تلقائياً
+        // ستختفي عند التفاعل مع أي حقل في الفورم
+    } else {
+        // رسائل النجاح تختفي بعد 6 ثواني
+        setTimeout(() => messageBox.style.display = 'none', 6000);
+    }
 }
+
+// إخفاء رسائل الخطأ عند التفاعل مع الفورم
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        // إخفاء الرسالة عند الكتابة في أي حقل
+        form.addEventListener('input', function() {
+            const messageBox = document.getElementById('messageBox');
+            if (messageBox && messageBox.classList.contains('error')) {
+                messageBox.style.display = 'none';
+            }
+        });
+        
+        // إخفاء الرسالة عند التفاعل مع أي select أو radio
+        form.addEventListener('change', function() {
+            const messageBox = document.getElementById('messageBox');
+            if (messageBox && messageBox.classList.contains('error')) {
+                messageBox.style.display = 'none';
+            }
+        });
+    }
+});
 
 // =====================================================
 // 10. FORM SUBMISSION 
@@ -3228,7 +3451,7 @@ function showMessage(text, type) {
 const form = document.getElementById('contactForm');
 
 form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+   e.preventDefault();
 
     const clientType = document.querySelector('input[name="clientType"]:checked');
     const termsCheckbox = document.getElementById('termsCheckbox');
@@ -3244,7 +3467,17 @@ form.addEventListener('submit', async (e) => {
     const phone = document.getElementById('phone').value.trim();
     const whatsapp = document.getElementById('whatsapp').value.trim();
 
- 
+    // NEW: Get contact preferences
+    const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
+    const preferredHour = document.getElementById('preferredHour').value;
+    const preferredMinute = document.getElementById('preferredMinute').value;
+    const preferredPeriod = document.getElementById('preferredPeriod').value;
+    
+    let preferredTime = '';
+    if (preferredHour && preferredMinute && preferredPeriod) {
+        preferredTime = `${preferredHour}:${preferredMinute} ${preferredPeriod}`;
+    }
+
     const formData = {
         agent: document.getElementById('agent').value,
         name: document.getElementById('name').value.trim(),
@@ -3252,6 +3485,8 @@ form.addEventListener('submit', async (e) => {
         phone: phone,
         whatsappCountryCode: whatsappCountryCode,
         whatsapp: whatsapp,
+        contactMethod: contactMethod ? contactMethod.value : '',
+        preferredTime: preferredTime,
         clientType: clientType ? clientType.value : '',
         unitType: document.getElementById('unitType').value,
         area: document.getElementById('area').value.trim(),
@@ -3290,7 +3525,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     if (!formData.name || !formData.phone || !formData.clientType) {
-        showMessage('الرجاء التأكد من إدخال الاسم ورقم الهاتف ونوع العميل بشكل صحيح', 'error');
+        showConfirmationModal('error', '❌ خطأ في البيانات', 'الرجاء التأكد من إدخال الاسم ورقم الهاتف ونوع العميل بشكل صحيح');
         return;
     }
 
@@ -3300,7 +3535,6 @@ form.addEventListener('submit', async (e) => {
     submitBtn.innerHTML = '⏳ جاري الإرسال...';
 
     try {
-        
         const response = await fetch(SCRIPT_URL, {
             method: 'POST',
             redirect: 'follow',
@@ -3310,26 +3544,21 @@ form.addEventListener('submit', async (e) => {
             }
         });
 
-
         if (response.ok) {
             console.log('✅ تم الإرسال بنجاح - HTTP 200');
-            showMessage('✅ تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن', 'success');
+            showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
             form.reset();
             goToStep1();
         } else {
-       
             console.warn(`⚠️ Response Status: ${response.status} - لكن البيانات قد تكون وصلت`);
-            showMessage('✅ تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن', 'success');
+            showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
             form.reset();
             goToStep1();
         }
 
     } catch (error) {
-     
         console.error('❌ Fetch Error (قد لا يعني فشل):', error);
-        
-      
-        showMessage('✅ تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن', 'success');
+        showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
         form.reset();
         goToStep1();
 
@@ -3338,7 +3567,36 @@ form.addEventListener('submit', async (e) => {
         submitBtn.innerHTML = originalText;
     }
 });
+// =====================================================
+// CONFIRMATION MODAL FUNCTIONS
+// =====================================================
+function showConfirmationModal(type, title, message) {
+    const modal = document.getElementById('confirmationModal');
+    const icon = document.getElementById('confirmationIcon');
+    const titleEl = document.getElementById('confirmationTitle');
+    const messageEl = document.getElementById('confirmationMessage');
 
+    if (type === 'success') {
+        icon.innerHTML = '✓';
+        icon.className = 'confirmation-icon success';
+    } else {
+        icon.innerHTML = '✕';
+        icon.className = 'confirmation-icon error';
+    }
+
+    titleEl.textContent = title;
+    messageEl.textContent = message;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeConfirmationModal() {
+    const modal = document.getElementById('confirmationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+
+    window.location.reload();
+}
 </script>
 
 </script>
