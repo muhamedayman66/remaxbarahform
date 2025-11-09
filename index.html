@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RE/MAX BARAH - الوكيل المعتمد لشركة ريماكس العالمية في أسيوط. نساعدك في بيع وشراء العقارات بأمان واحترافية">
+    <meta name="keywords" content="remax barah, ريماكس براح, عقارات أسيوط, RE/MAX BARAH, بيع عقارات, شراء عقارات, عقارات صعيد مصر, استثمار عقاري, ريماكس أسيوط">
+    <meta name="author" content="RE/MAX BARAH">
     <meta name="theme-color" content="#003DA5">
+    
+    <!-- Performance Optimization -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <title>RE/MAX BARAH - شريكك العقاري الموثوق في أسيوط</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
     <style>
-
-/* =====================================================
-   1. RESET & BASE STYLES
-===================================================== */
+/* ==================== CSS RESET & BASE ==================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-*:focus {
-    outline: none !important;
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.category-label:focus,
+.btn:focus {
+    outline: none;
+}
+
+/* CSS Variables */
 :root {
     --primary: #003DA5;
     --secondary: #E31E24;
     --dark: #1a1a2e;
     --light: #f8f9fa;
     --gold: #d4af37;
+    --z-modal: 10000;
+    --z-confirmation: 10001;
+    --z-nav: 1000;
 }
 
 html {
@@ -46,11 +66,7 @@ body {
     margin: 0 !important;
 }
 
-/* =====================================================
-   2. HERO SECTION & NAVBAR
-===================================================== */
-
-/* Hero Container */
+/* ==================== HERO SECTION ==================== */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -74,7 +90,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: var(--z-nav);
     background: transparent;
 }
 
@@ -94,7 +110,7 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 1000;
+    z-index: calc(var(--z-nav) + 1);
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
@@ -135,7 +151,7 @@ body {
     width: 100%;
     background: linear-gradient(180deg, rgba(0, 61, 165, 0.98) 0%, rgba(1, 16, 54, 0.98) 100%);
     backdrop-filter: blur(20px);
-    z-index: 999;
+    z-index: var(--z-nav);
     padding: 80px 20px 30px;
     gap: 0;
     list-style: none;
@@ -171,7 +187,7 @@ body {
     padding-right: 25px;
 }
 
-/* Hero Content Container */
+/* Hero Container */
 .hero-container {
     display: flex;
     flex-direction: column;
@@ -179,11 +195,12 @@ body {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 15px ;
+    padding: 20px 15px;
     flex: 1;
     overflow-y: visible;
 }
 
+/* Hero Content */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -222,11 +239,10 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-    overflow-x: hidden; 
-    flex-wrap: wrap; 
+    overflow-x: hidden;
+    flex-wrap: wrap;
 }
 
-/* كل Feature */
 .hero-feature {
     display: flex;
     align-items: center;
@@ -238,9 +254,8 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     white-space: nowrap;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
-
 
 /* Social Icons */
 .social-icons {
@@ -271,9 +286,7 @@ body {
     background: #E31E24;
 }
 
-/* =====================================================
-   3. GENERAL SECTIONS
-===================================================== */
+/* ==================== GENERAL SECTIONS ==================== */
 .section {
     padding: 50px 15px;
     max-width: 1200px;
@@ -310,9 +323,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* =====================================================
-   4. ABOUT SECTION
-===================================================== */
+/* ==================== ABOUT SECTION ==================== */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -355,9 +366,7 @@ body {
     font-size: 13px;
 }
 
-/* =====================================================
-   5. SERVICES SECTION
-===================================================== */
+/* ==================== SERVICES SECTION ==================== */
 .services-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
 }
@@ -406,9 +415,7 @@ body {
     font-weight: 700;
 }
 
-/* =====================================================
-   6. WHY CHOOSE SECTION
-===================================================== */
+/* ==================== WHY CHOOSE SECTION ==================== */
 .why-choose-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -458,9 +465,7 @@ body {
     font-size: 14px;
 }
 
-/* =====================================================
-   7. LOCATION SECTION
-===================================================== */
+/* ==================== LOCATION SECTION ==================== */
 .location-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
@@ -500,6 +505,7 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .map-placeholder:hover {
@@ -563,9 +569,7 @@ body {
     font-size: 13px;
 }
 
-/* =====================================================
-   8. SOCIAL MEDIA SECTION
-===================================================== */
+/* ==================== SOCIAL MEDIA SECTION ==================== */
 .social-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     text-align: center;
@@ -632,40 +636,19 @@ body {
     transform: scale(1.1) rotate(5deg);
 }
 
-.social-card:nth-child(1) .social-icon {
-    color: #1877f2;
-}
-
+.social-card:nth-child(1) .social-icon { color: #1877f2; }
 .social-card:nth-child(2) .social-icon {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
-.social-card:nth-child(3) .social-icon {
-    color: #000000;
-}
-
-.social-card:nth-child(4) .social-icon {
-    color: #0088cc;
-}
-
-.social-card:nth-child(5) .social-icon {
-    color: #25D366;
-}
-
-.social-card:nth-child(6) .social-icon {
-    color: #0A66C2;
-}
-
-.social-card:nth-child(7) .social-icon {
-    color: #FF0000;
-}
-
-.social-card:nth-child(8) .social-icon {
-    color: #1877f2;
-}
+.social-card:nth-child(3) .social-icon { color: #000000; }
+.social-card:nth-child(4) .social-icon { color: #0088cc; }
+.social-card:nth-child(5) .social-icon { color: #25D366; }
+.social-card:nth-child(6) .social-icon { color: #0A66C2; }
+.social-card:nth-child(7) .social-icon { color: #FF0000; }
+.social-card:nth-child(8) .social-icon { color: #1877f2; }
 
 .social-card h4 {
     font-size: 14px;
@@ -673,11 +656,7 @@ body {
     color: var(--dark);
 }
 
-/* =====================================================
-   9. CONTACT FORM SECTION
-===================================================== */
-
-/* Form Section Container */
+/* ==================== CONTACT FORM ==================== */
 .form-section {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     padding: 50px 15px;
@@ -693,7 +672,6 @@ body {
     animation: slideUp 0.6s ease-out;
 }
 
-/* Form Header */
 .form-header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     padding: 35px 25px;
@@ -817,7 +795,7 @@ body {
 
 .step-label {
     font-size: 12px;
-    color: #fff;
+    color: #666;
     font-weight: 700;
     transition: color 0.3s;
 }
@@ -953,14 +931,6 @@ body {
     outline: none !important;
 }
 
-.category-option input[type="radio"]:focus + .category-label,
-.category-option input[type="radio"]:active + .category-label {
-    outline: none !important;
-    box-shadow: 0 10px 30px rgba(0, 61, 165, 0.3) !important;
-    transform: none !important;
-    border-color: transparent !important;
-}
-
 .category-label:hover {
     border-color: var(--primary);
     transform: translateY(-2px);
@@ -1023,6 +993,7 @@ body {
     background: linear-gradient(135deg, #999 0%, #777 100%);
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 .btn-secondary {
@@ -1059,7 +1030,7 @@ body {
     border: 2px solid #f5c6cb;
 }
 
-/* Terms & Conditions */
+/* Terms Container */
 .terms-container {
     margin: 18px 0;
     padding: 14px;
@@ -1102,7 +1073,7 @@ body {
     color: var(--secondary);
 }
 
-/* Hero Form Card Styles */
+/* Hero Form Card */
 .form-card {
     border-radius: 20px;
     background: transparent;
@@ -1187,6 +1158,7 @@ body {
 
 .form-card-content {
     background: transparent;
+    padding: 20px 15px;
 }
 
 .form-card-content .form-label,
@@ -1226,13 +1198,48 @@ body {
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(0, 61, 165, 0.08);
 }
-/* =====================================================
-   10. MODAL STYLES
-===================================================== */
+
+/* Time Picker */
+.time-picker-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e8ecef;
+    border-radius: 12px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+    font-family: inherit;
+    color: #000000;
+    text-align: center;
+    font-weight: normal;
+}
+
+.time-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 61, 165, 0.08);
+    transform: translateY(-2px);
+}
+
+.time-separator {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ==================== MODALS ==================== */
 .modal {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: var(--z-modal);
     left: 0;
     top: 0;
     width: 100%;
@@ -1257,6 +1264,7 @@ body {
     overflow-y: auto;
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
 }
 
 .modal-header {
@@ -1349,9 +1357,84 @@ body {
     box-shadow: 0 12px 35px rgba(40, 167, 69, 0.4);
 }
 
-/* =====================================================
-   11. FOOTER
-===================================================== */
+/* Confirmation Modal */
+.confirmation-modal {
+    display: none;
+    position: fixed;
+    z-index: var(--z-confirmation);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    animation: fadeIn 0.3s ease;
+}
+
+.confirmation-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-modal-content {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.4s ease;
+    position: relative;
+}
+
+.confirmation-icon {
+    font-size: 70px;
+    margin-bottom: 20px;
+    animation: bounceIn 0.6s ease;
+}
+
+.confirmation-icon.success {
+    color: #28a745;
+}
+
+.confirmation-icon.error {
+    color: #dc3545;
+}
+
+.confirmation-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.confirmation-message {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.confirmation-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 61, 165, 0.3);
+}
+
+.confirmation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 61, 165, 0.4);
+}
+
+/* ==================== FOOTER ==================== */
 footer {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
@@ -1409,56 +1492,15 @@ footer p {
     margin-top: 12px;
 }
 
-/* =====================================================
-   12. ANIMATIONS
-===================================================== */
+/* ==================== ANIMATIONS ==================== */
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes bounceArrow {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(10px);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInMenu {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes slideUp {
@@ -1494,11 +1536,30 @@ footer p {
     }
 }
 
-/* =====================================================
-   13. RESPONSIVE STYLES
-===================================================== */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 
-/* Desktop View (1025px and up) */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
 @media (min-width: 1025px) {
     .hero {
         background-attachment: fixed;
@@ -1598,69 +1659,6 @@ footer p {
     }
 }
 
-@media (max-width: 480px) {
-    .hero-features {
-        gap: 6px;
-        padding: 0 10px;
-    }
-    
-    .hero-feature {
-        padding: 7px 9px;
-        gap: 5px;
-        flex: 1 1 auto;
-        max-width: calc(33.33% - 10px);
-        text-align: center;
-    }
-    
-    .hero-feature i {
-        font-size: 13px;
-    }
-    
-    .hero-feature span {
-        font-size: 9px;
-    }
-}
-
-@media (max-width: 380px) {
-    .hero-features {
-        gap: 4px;
-        padding: 0 4px;
-    }
-    
-    .hero-feature {
-        padding: 5px 7px;
-        gap: 4px;
-        max-width: calc(33.33% - 6px);
-    }
-    
-    .hero-feature i {
-        font-size: 11px;
-    }
-    
-    .hero-feature span {
-        font-size: 8px;
-    }
-}
-
-
-@media (max-width: 340px) {
-    .hero-feature {
-        padding: 4px 6px;
-        gap: 3px;
-        max-width: calc(33.33% - 4px);
-    }
-
-    .hero-feature i {
-        font-size: 10px;
-    }
-
-    .hero-feature span {
-        font-size: 7px;
-    }
-}
-
-
-
 @media (min-width: 769px) and (max-width: 1024px) {
     .hero-container {
         max-width: 800px;
@@ -1692,7 +1690,6 @@ footer p {
     }
 }
 
-/* Tablet and Mobile Navigation (Below 769px) */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -1733,113 +1730,6 @@ footer p {
         margin-bottom: 30px;
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .services-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .why-choose-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .location-wrapper {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .location-map {
-        height: 300px;
-    }
-
-    .social-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .form-section {
-        padding: 40px 12px;
-    }
-
-    .form-wrapper {
-        border-radius: 18px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    .form-header {
-        padding: 25px 20px;
-    }
-
-    .logo-form {
-        font-size: 22px;
-        margin-bottom: 8px;
-    }
-
-    .form-title {
-        font-size: 18px;
-        margin-bottom: 6px;
-    }
-
-    .form-subtitle {
-        font-size: 12px;
-    }
-
-    .progress-container {
-        padding: 20px 12px;
-    }
-
-    .step-circle {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-        margin: 0 auto 6px;
-    }
-
-    .step-label {
-        font-size: 11px;
-    }
-
-    .form-content {
-        padding: 25px 15px;
-    }
-
-    .form-group {
-        margin-bottom: 16px;
-    }
-
-    .form-label {
-        font-size: 12px;
-        margin-bottom: 6px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        padding: 10px 12px;
-        font-size: 12px;
-        border-radius: 10px;
-    }
-
-    .form-textarea {
-        min-height: 90px;
-    }
-
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .category-label {
-        padding: 14px 12px;
-        font-size: 12px;
-        border-radius: 10px;
-    }
-
     .form-row {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -1850,159 +1740,11 @@ footer p {
         gap: 10px;
         margin-top: 25px;
     }
-
-    .btn {
-        padding: 12px 18px;
-        font-size: 13px;
-        border-radius: 10px;
-    }
-
-    .terms-container {
-        padding: 12px;
-        margin: 15px 0;
-    }
-
-    .terms-label {
-        font-size: 12px;
-    }
-
-    .modal-content {
-        padding: 20px;
-        border-radius: 15px;
-    }
-
-    .modal-header {
-        margin-bottom: 15px;
-        padding-bottom: 12px;
-    }
-
-    .modal-title {
-        font-size: 18px;
-    }
-
-    .terms-content h3 {
-        font-size: 14px;
-        margin: 15px 0 10px;
-    }
-
-    .terms-content {
-        font-size: 12px;
-    }
 }
 
-/* Small Mobile (480px and below) */
 @media (max-width: 480px) {
-    .nav-menu {
-        padding: 70px 12px 20px 12px;
-    }
-
-    .nav-menu a {
-        padding: 14px 12px;
-        font-size: 14px;
-    }
-
-    .hero-logo {
-        padding: 12px 15px;
-    }
-
     .hero-logo img {
         height: 50px;
-    }
-
-    .hamburger {
-        position: absolute;
-        top: 22px;
-        left: 15px;
-    }
-
-    .hamburger span {
-        width: 22px;
-        height: 2.5px;
-    }
-
-    .hero {
-        min-height: 60vh;
-        background-attachment: scroll;
-        background-size: cover;
-    }
-
-    .hero h1 {
-        font-size: 22px;
-    }
-
-    .hero .subtitle {
-        font-size: 16px;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    .section-title {
-        font-size: 22px;
-    }
-
-    .form-wrapper {
-        border-radius: 15px;
-    }
-
-    .form-header {
-        padding: 20px 15px;
-    }
-
-    .logo-form {
-        font-size: 20px;
-    }
-
-    .form-title {
-        font-size: 16px;
-    }
-
-    .form-content {
-        padding: 20px 12px;
-    }
-
-    .btn-container {
-        margin-top: 20px;
-    }
-
-    .location-detail-text h4 {
-        font-size: 13px;
-    }
-
-    .location-detail-text p {
-        font-size: 12px;
-    }
-
-    .form-card-content {
-        padding: 18px 12px;
-        max-height: none;
-        overflow-y: visible;
-    }
-
-    .hero-form-wrapper {
-        width: calc(100% - 10px);
-        max-width: 100%;
-    }
-
-    .form-card {
-        border-radius: 12px;
-    }
-}
-
-/* Extra Small Mobile (380px and below) */
-@media (max-width: 380px) {
-    .hero-logo img {
-        height: 50px;
-    }
-
-    .hamburger {
-        padding: 6px;
-    }
-
-    .hamburger span {
-        width: 22px;
-        height: 2.5px;
     }
 
     .hero h1 {
@@ -2014,198 +1756,76 @@ footer p {
     }
 
     .hero p {
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+    .hero-features {
+        gap: 6px;
+        padding: 0 10px;
     }
 
     .hero-feature {
-        padding: 8px 12px;
-    }
-
-    .hero-feature span {
+        padding: 7px 10px;
+        gap: 5px;
         font-size: 11px;
     }
 
-    .social-icons a {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .form-card-title {
-        font-size: 16px;
-    }
-
-    .form-card-subtitle {
-        color: #ffffff !important;
-        font-size: 11px;
+    .hero-feature i {
+        font-size: 14px;
     }
 
     .section-title {
-        font-size: 24px;
+        font-size: 22px;
     }
 
-    .section-subtitle {
-        font-size: 13px;
+    .form-card-title {
+        font-size: 20px;
     }
-}
-/* =====================================================
-   SUCCESS/ERROR MODAL
-===================================================== */
-.confirmation-modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    animation: fadeIn 0.3s ease;
-}
 
-.confirmation-modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.confirmation-modal-content {
-    background: white;
-    padding: 35px 25px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
-    animation: slideUp 0.4s ease;
-    position: relative;
-}
-
-.confirmation-icon {
-    font-size: 70px;
-    margin-bottom: 20px;
-    animation: bounceIn 0.6s ease;
-}
-
-.confirmation-icon.success {
-    color: #28a745;
-}
-
-.confirmation-icon.error {
-    color: #dc3545;
-}
-
-.confirmation-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--dark);
-    margin-bottom: 12px;
-}
-
-.confirmation-message {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-.confirmation-btn {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: white;
-    padding: 14px 40px;
-    border: none;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 61, 165, 0.3);
-}
-
-.confirmation-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0, 61, 165, 0.4);
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
+    .form-card-subtitle {
+        font-size: 12px;
     }
 }
 
-/* Time Picker Styling */
-.time-picker-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-}
+@media (max-width: 380px) {
+    .hero-feature {
+        padding: 6px 8px;
+        gap: 4px;
+        font-size: 10px;
+    }
 
-
-.time-select {
-    flex: 1;
-    padding: 12px 15px;
-    border: 2px solid #e8ecef;
-    border-radius: 12px;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    background: #fafbfc;
-    font-family: inherit;
-    color: #000000;
-    text-align: center;
-    font-weight: normal;
-}
-
-.time-select:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(0, 61, 165, 0.08);
-    transform: translateY(-2px);
-}
-
-.time-separator {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary);
+    .hero-feature i {
+        font-size: 12px;
+    }
 }
     </style>
 </head>
 <body>
 
-<!-- =====================================================
-     HERO SECTION WITH NAVBAR AND FORM
-===================================================== -->
+<!-- ==================== HERO SECTION ==================== -->
 <section class="hero">
-<nav class="hero-navbar">
-    <div class="hero-logo">
-        <img src="images/LOGO (1).png" alt="RE/MAX BARAH" />
-    </div>
+    <!-- Navigation Bar -->
+    <nav class="hero-navbar">
+        <div class="hero-logo">
+            <img src="images/LOGO.png" alt="RE/MAX BARAH" />
+        </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-    <ul class="nav-menu" id="navMenu">
-        <li><a href="#about" onclick="closeMenu()">من نحن</a></li>
-        <li><a href="#services" onclick="closeMenu()">الخدمات</a></li>
-        <li><a href="#why-choose" onclick="closeMenu()">لماذا نحن</a></li>
-        <li><a href="#location" onclick="closeMenu()">الموقع</a></li>
-    </ul>
-</nav>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#about" onclick="closeMenu()">من نحن</a></li>
+            <li><a href="#services" onclick="closeMenu()">الخدمات</a></li>
+            <li><a href="#why-choose" onclick="closeMenu()">لماذا نحن</a></li>
+            <li><a href="#location" onclick="closeMenu()">الموقع</a></li>
+        </ul>
+    </nav>
 
     <div class="hero-container">
-        <!-- Left Side: Content -->
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>RE/MAX BARAH</h1>
             <h1 class="subtitle">شريكك العقاري الموثوق في أسيوط و صعيد مصر</h1>
@@ -2226,20 +1846,20 @@ footer p {
                 </div>
             </div>
 
-          <div class="social-icons">
-    <a href="https://wa.me/201500070300" target="_blank" title="تواصل واتساب">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://maps.app.goo.gl/Ytj3AaBjhMHoFrUa7" target="_blank" title="موقع الشركة">
-        <i class="fas fa-map-marker-alt"></i>
-    </a>
-    <a href="tel:01500070300" title="اتصل بنا">
-        <i class="fas fa-phone"></i>
-    </a>
-</div>
+            <div class="social-icons">
+                <a href="https://wa.me/201500070300" target="_blank" title="تواصل واتساب">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/Ytj3AaBjhMHoFrUa7" target="_blank" title="موقع الشركة">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+                <a href="tel:01500070300" title="اتصل بنا">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
         </div>
 
-        <!-- Right Side: Form -->
+        <!-- Contact Form -->
         <div class="hero-form-wrapper" id="contact-form">
             <div class="form-card">
                 <div class="form-card-header">
@@ -2247,6 +1867,7 @@ footer p {
                     <p class="form-card-subtitle">سجّل بياناتك وسنتواصل معك فوراً</p>
                 </div>
 
+                <!-- Progress Bar -->
                 <div class="progress-container-hero">
                     <div class="progress-bar">
                         <div class="progress-line">
@@ -2267,540 +1888,455 @@ footer p {
                     <div id="messageBox" class="message"></div>
 
                     <form id="contactForm">
-                      <!-- STEP 1 -->
-<div class="form-step active" id="step1">
-    <div class="form-group">
-        <label class="form-label" for="agent">
-            المستشار العقاري <span class="required">*</span>
-        </label>
-        <select id="agent" name="agent" class="form-select" required>
-            <option value="" disabled selected>-- اختار المستشار العقاري --</option>
-            <option value="غير متابع">غير متابع مع مستشار عقاري</option>
-            <optgroup label="الإدارة">
-                <option value="المدير العام">المدير العام</option>
-            </optgroup>
-            <optgroup label="فريق المبيعات">
-                <option value="محمد ايمن">محمد أيمن</option>
-                <option value="ماركو ناصر">ماركو ناصر</option>
-                <option value="مريم رشاد">مريم رشاد</option>
-                <option value="ساندرا امجد">ساندرا أمجد</option>
-                <option value="كريستين مجدي">كريستين مجدي</option>
-                <option value="فاطمه ايهاب">فاطمة إيهاب</option>
-                <option value="ساره سعد">سارة سعد</option>
-                <option value="ايه فاروق">آية فاروق</option>
-                <option value="الاء حاتم">الاء حاتم</option>
-                <option value="امنه جمال">آمنة جمال</option>
-                <option value="ايه محمد">آية محمد</option>
-            </optgroup>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
-        <input type="text" 
-               id="name" 
-               name="name" 
-               class="form-input" 
-               placeholder="أدخل اسمك الكامل" 
-               required>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group">
-            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
-            <div style="display: flex; gap: 10px;">
-                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
-                    <option value="">كود الدولة</option>
-                    <option value="+20" selected>مصر (+20)</option>
-                    <option value="+966">السعودية (+966)</option>
-                    <option value="+971">الإمارات (+971)</option>
-                    <option value="+965">الكويت (+965)</option>
-                    <option value="+974">قطر (+974)</option>
-                    <option value="+968">عمان (+968)</option>
-                    <option value="+973">البحرين (+973)</option>
-                    <option value="+962">الأردن (+962)</option>
-                    <option value="+961">لبنان (+961)</option>
-                    <option value="+1">الولايات المتحدة (+1)</option>
-                </select>
-                <input type="tel" 
-                       id="phone" 
-                       name="phone" 
-                       class="form-input" 
-                       placeholder="أدخل رقم الهاتف" 
-                       inputmode="numeric"
-                       required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
-            <div style="display: flex; gap: 10px;">
-                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
-                    <option value="">كود الدولة</option>
-                    <option value="+20" selected>مصر (+20)</option>
-                    <option value="+966">السعودية (+966)</option>
-                    <option value="+971">الإمارات (+971)</option>
-                    <option value="+965">الكويت (+965)</option>
-                    <option value="+974">قطر (+974)</option>
-                    <option value="+968">عمان (+968)</option>
-                    <option value="+973">البحرين (+973)</option>
-                    <option value="+962">الأردن (+962)</option>
-                    <option value="+961">لبنان (+961)</option>
-                    <option value="+1">الولايات المتحدة (+1)</option>
-                </select>
-                <input type="tel" 
-                       id="whatsapp" 
-                       name="whatsapp" 
-                       class="form-input" 
-                       placeholder="أدخل رقم الواتساب (اختياري)"
-                       inputmode="numeric">
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">أنا <span class="required">*</span></label>
-        <div class="category-grid">
-            <div class="category-option">
-                <input type="radio" name="clientType" id="seller" value="بائع">
-                <label for="seller" class="category-label"><span>بائع</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="buyer" value="مشتري">
-                <label for="buyer" class="category-label"><span>مشتري</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="renter" value="مستأجر">
-                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="clientType" id="landlord" value="مؤجر">
-                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
-            </div>
-        </div>
-    </div>
-
-<!-- NEW: Contact Method -->
-    <div class="form-group">
-        <label class="form-label">تفضل التواصل عبر (اختياري)</label>
-        <div class="category-grid">
-            <div class="category-option">
-                <input type="radio" name="contactMethod" id="contactPhone" value="هاتفياً">
-                <label for="contactPhone" class="category-label">
-                    <span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        هاتفياً
-                    </span>
-                </label>
-            </div>
-            <div class="category-option">
-                <input type="radio" name="contactMethod" id="contactWhatsapp" value="واتساب">
-                <label for="contactWhatsapp" class="category-label">
-                    <span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-left: 6px;">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                        واتساب
-                    </span>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    
-    <!-- NEW: Preferred Contact Time -->
-    <div class="form-group">
-        <label class="form-label">الوقت المفضل للتواصل (اختياري)</label>
-        <div class="time-picker-container">
-            <select id="preferredHour" name="preferredHour" class="time-select">
-                <option value="">-- اختر الساعة --</option>
-                <option value="12">12</option>
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-            </select>
-            <select id="preferredPeriod" name="preferredPeriod" class="time-select">
-                <option value="">-- اختر الفترة --</option>
-                <option value="صباحاً">صباحاً</option>
-                <option value="مساءً">مساءً</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="btn-container">
-        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
-    </div>
-</div>
-                <!-- STEP 2: Property Details -->
-            <div class="form-step" id="step2">
-              <div class="section-header">
-              <h3 style="font-size: 20px; font-weight: 700; color: #ffffff !important; margin-bottom: 6px;">تفاصيل العقار</h3>
-              <p style="color: #ffffff !important; font-size: 13px;">أخبرنا المزيد عن احتياجاتك العقارية</p>
-            </div>
-
-                    <!-- Common Fields -->
-                    <div class="form-row">
-                        <div class="form-group common-field">
-                            <label class="form-label" for="unitType">نوع الوحدة <span class="required">*</span></label>
-                            <select id="unitType" name="unitType" class="form-select">
-                                <option value="">اختر نوع الوحدة</option>
-                                <option value="شقة">شقة</option>
-                                <option value="فيلا">فيلا</option>
-                                <option value="دوبلكس">دوبلكس</option>
-                                <option value="عمارة">عمارة</option>
-                                <option value="محل">محل تجاري</option>
-                                <option value="مكتب">مكتب إداري</option>
-                                <option value="أرض">أرض</option>
-                                <option value="مخزن">مخزن</option>
-                                <option value="مصنع">مصنع</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group common-field">
-                            <label class="form-label" for="area">المنطقة <span class="required">*</span></label>
-                            <input type="text" 
-                                   id="area" 
-                                   name="area" 
-                                   class="form-input" 
-                                   placeholder="مثال: المنطقة الأولى، أسيوط الجديدة">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group common-field">
-                            <label class="form-label" for="space">المساحة (متر مربع) <span class="required">*</span></label>
-                            <input type="text" 
-                                   id="space" 
-                                   name="space" 
-                                   class="form-input" 
-                                   placeholder="مثال: 150 م">
-                        </div>
-
-                        <div class="form-group common-field">
-                            <label class="form-label" for="rooms">عدد الغرف <span class="required">*</span></label>
-                            <input type="text" 
-                                   id="rooms" 
-                                   name="rooms" 
-                                   class="form-input" 
-                                   placeholder="3">
-                        </div>
-                    </div>
-
-                    <div class="form-group common-field">
-                        <label class="form-label" for="bathrooms">عدد الحمامات <span class="required">*</span></label>
-                        <input type="text" 
-                               id="bathrooms" 
-                               name="bathrooms" 
-                               class="form-input" 
-                               placeholder="2">
-                    </div>
-
-                    <!-- Seller Specific Fields -->
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="floor">الدور <span class="required">*</span></label>
-                        <input type="text" 
-                               id="floor" 
-                               name="floor" 
-                               class="form-input" 
-                               placeholder="مثال: الدور الثالث">
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="finishing">حالة التشطيب <span class="required">*</span></label>
-                        <select id="finishing" name="finishing" class="form-select">
-                            <option value="">اختر حالة التشطيب</option>
-                            <option value="طوب احمر">طوب احمر</option>
-                            <option value="نصف تشطيب">نصف تشطيب</option>
-                            <option value="3/4 تشطيب">3/4 تشطيب</option>
-                            <option value="تشطيب عادي">تشطيب عادي</option>
-                            <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
-                            <option value="تشطيب فاخر">تشطيب فاخر</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="price">السعر المطلوب <span class="required">*</span></label>
-                        <input type="text" 
-                               id="price" 
-                               name="price" 
-                               class="form-input" 
-                               placeholder="مثال: 500,000 جنيه">
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="paymentMethod">طريقة الدفع <span class="required">*</span></label>
-                        <select id="paymentMethod" name="paymentMethod" class="form-select">
-                            <option value="">اختر طريقة الدفع</option>
-                            <option value="كاش">كاش</option>
-                            <option value="تقسيط">تقسيط</option>
-                            <option value="كاش وتقسيط">كاش وتقسيط</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="utilities">جاهزية المرافق <span class="required">*</span></label>
-                        <textarea id="utilities" 
-                                  name="utilities" 
-                                  class="form-textarea" 
-                                  placeholder="مثال: كهرباء، مياه، غاز طبيعي..." 
-                                  rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="documentsReady">هل أوراق الملكية جاهزة؟ <span class="required">*</span></label>
-                        <select id="documentsReady" name="documentsReady" class="form-select">
-                            <option value="">اختر</option>
-                            <option value="نعم">نعم - جاهزة</option>
-                            <option value="قيد الإجراء">قيد الإجراء</option>
-                            <option value="لا">لا - غير جاهزة</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group seller-field" style="display: none;">
-                        <label class="form-label" for="isRented">هل الوحدة مؤجرة حالياً؟ <span class="required">*</span></label>
-                        <select id="isRented" name="isRented" class="form-select" onchange="toggleSellerRentDetails(this)">
-                            <option value="">اختر</option>
-                            <option value="لا">لا</option>
-                            <option value="نعم">نعم</option>
-                        </select>
-                    </div>
-
-                    <div id="sellerRentDetails" style="display: none;">
-                        <div class="form-row">
-                            <div class="form-group seller-field">
-                                <label class="form-label" for="rentPeriodSeller">المدة المؤجرة</label>
-                                <input type="text" 
-                                       id="rentPeriodSeller" 
-                                       name="rentPeriodSeller" 
-                                       class="form-input" 
-                                       placeholder="مثال: سنة واحدة">
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active" id="step1">
+                            <!-- Honeypot for spam protection -->
+                            <input type="text" name="website" id="website" style="position: absolute; left: -5000px; opacity: 0; pointer-events: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="agent">
+                                    المستشار العقاري <span class="required">*</span>
+                                </label>
+                                <select id="agent" name="agent" class="form-select" required>
+                                    <option value="" disabled selected>-- اختار المستشار العقاري --</option>
+                                    <option value="غير متابع">غير متابع مع مستشار عقاري</option>
+                                    <optgroup label="الإدارة">
+                                        <option value="المدير العام">المدير العام</option>
+                                    </optgroup>
+                                    <optgroup label="فريق المبيعات">
+                                        <option value="محمد ايمن">محمد أيمن</option>
+                                        <option value="ماركو ناصر">ماركو ناصر</option>
+                                        <option value="مريم رشاد">مريم رشاد</option>
+                                        <option value="ساندرا امجد">ساندرا أمجد</option>
+                                        <option value="كريستين مجدي">كريستين مجدي</option>
+                                        <option value="فاطمه ايهاب">فاطمة إيهاب</option>
+                                        <option value="ساره سعد">سارة سعد</option>
+                                        <option value="ايه فاروق">آية فاروق</option>
+                                        <option value="الاء حاتم">الاء حاتم</option>
+                                        <option value="امنه جمال">آمنة جمال</option>
+                                        <option value="ايه محمد">آية محمد</option>
+                                    </optgroup>
+                                </select>
                             </div>
 
-                            <div class="form-group seller-field">
-                                <label class="form-label" for="rentEndDateSeller">تاريخ انتهاء الإيجار</label>
-                                <input type="date" id="rentEndDateSeller" name="rentEndDateSeller" class="form-input">
+                            <div class="form-group">
+                                <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
+                                            <option value="">كود الدولة</option>
+                                            <option value="+20" selected>مصر (+20)</option>
+                                            <option value="+966">السعودية (+966)</option>
+                                            <option value="+971">الإمارات (+971)</option>
+                                            <option value="+965">الكويت (+965)</option>
+                                            <option value="+974">قطر (+974)</option>
+                                            <option value="+968">عمان (+968)</option>
+                                            <option value="+973">البحرين (+973)</option>
+                                            <option value="+962">الأردن (+962)</option>
+                                            <option value="+961">لبنان (+961)</option>
+                                            <option value="+1">الولايات المتحدة (+1)</option>
+                                        </select>
+                                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="أدخل رقم الهاتف" inputmode="numeric" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
+                                            <option value="">كود الدولة</option>
+                                            <option value="+20" selected>مصر (+20)</option>
+                                            <option value="+966">السعودية (+966)</option>
+                                            <option value="+971">الإمارات (+971)</option>
+                                            <option value="+965">الكويت (+965)</option>
+                                            <option value="+974">قطر (+974)</option>
+                                            <option value="+968">عمان (+968)</option>
+                                            <option value="+973">البحرين (+973)</option>
+                                            <option value="+962">الأردن (+962)</option>
+                                            <option value="+961">لبنان (+961)</option>
+                                            <option value="+1">الولايات المتحدة (+1)</option>
+                                        </select>
+                                        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب (اختياري)" inputmode="numeric">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">أنا <span class="required">*</span></label>
+                                <div class="category-grid">
+                                    <div class="category-option">
+                                        <input type="radio" name="clientType" id="seller" value="بائع">
+                                        <label for="seller" class="category-label"><span>بائع</span></label>
+                                    </div>
+                                    <div class="category-option">
+                                        <input type="radio" name="clientType" id="buyer" value="مشتري">
+                                        <label for="buyer" class="category-label"><span>مشتري</span></label>
+                                    </div>
+                                    <div class="category-option">
+                                        <input type="radio" name="clientType" id="renter" value="مستأجر">
+                                        <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
+                                    </div>
+                                    <div class="category-option">
+                                        <input type="radio" name="clientType" id="landlord" value="مؤجر">
+                                        <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">تفضل التواصل عبر (اختياري)</label>
+                                <div class="category-grid">
+                                    <div class="category-option">
+                                        <input type="radio" name="contactMethod" id="contactPhone" value="هاتفياً">
+                                        <label for="contactPhone" class="category-label">
+                                            <span>
+                                                <i class="fas fa-phone-alt" style="margin-left: 8px; font-size: 16px;"></i>
+                                                هاتفياً
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="category-option">
+                                        <input type="radio" name="contactMethod" id="contactWhatsapp" value="واتساب">
+                                        <label for="contactWhatsapp" class="category-label">
+                                            <span>
+                                                <i class="fab fa-whatsapp" style="margin-left: 8px; font-size: 18px;"></i>
+                                                واتساب
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">الوقت المفضل للتواصل (اختياري)</label>
+                                <div class="time-picker-container">
+                                    <select id="preferredHour" name="preferredHour" class="time-select">
+                                        <option value="" disabled selected>-- اختر الساعة --</option>
+                                        <option value="12">12</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                    </select>
+                                    <select id="preferredPeriod" name="preferredPeriod" class="time-select">
+                                        <option value="" disabled selected>-- اختر الفترة --</option>
+                                        <option value="صباحاً">صباحاً</option>
+                                        <option value="مساءً">مساءً</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Buyer Specific Fields -->
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="budget">الميزانية <span class="required">*</span></label>
-                        <input type="text" 
-                               id="budget" 
-                               name="budget" 
-                               class="form-input" 
-                               placeholder="مثال: من 500,000 إلى 700,000 جنيه">
-                    </div>
+                        <!-- Step 2: Property Details -->
+                        <div class="form-step" id="step2">
+                            <div class="section-header">
+                                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff !important; margin-bottom: 6px;">تفاصيل العقار</h3>
+                                <p style="color: #ffffff !important; font-size: 13px;">أخبرنا المزيد عن احتياجاتك العقارية</p>
+                            </div>
 
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="paymentMethodBuyer">طريقة الدفع المفضلة <span class="required">*</span></label>
-                        <select id="paymentMethodBuyer" name="paymentMethodBuyer" class="form-select">
-                            <option value="">اختر طريقة الدفع</option>
-                            <option value="كاش">كاش</option>
-                            <option value="تقسيط">تقسيط</option>
-                            <option value="تمويل بنكي">تمويل بنكي</option>
-                        </select>
-                    </div>
+                            <div class="form-row">
+                                <div class="form-group common-field">
+                                    <label class="form-label" for="unitType">نوع الوحدة <span class="required">*</span></label>
+                                    <select id="unitType" name="unitType" class="form-select">
+                                        <option value="">اختر نوع الوحدة</option>
+                                        <option value="شقة">شقة</option>
+                                        <option value="فيلا">فيلا</option>
+                                        <option value="دوبلكس">دوبلكس</option>
+                                        <option value="عمارة">عمارة</option>
+                                        <option value="محل">محل تجاري</option>
+                                        <option value="مكتب">مكتب إداري</option>
+                                        <option value="أرض">أرض</option>
+                                        <option value="مخزن">مخزن</option>
+                                        <option value="مصنع">مصنع</option>
+                                    </select>
+                                </div>
 
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="finishingRequired">التشطيب المطلوب <span class="required">*</span></label>
-                        <select id="finishingRequired" name="finishingRequired" class="form-select">
-                            <option value="">اختر حالة التشطيب</option>
-                            <option value="طوب احمر">طوب احمر</option>
-                            <option value="نصف تشطيب">نصف تشطيب</option>
-                            <option value="3/4 تشطيب">3/4 تشطيب</option>
-                            <option value="تشطيب عادي">تشطيب عادي</option>
-                            <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
-                            <option value="تشطيب فاخر">تشطيب فاخر</option>
-                        </select>
-                    </div>
+                                <div class="form-group common-field">
+                                    <label class="form-label" for="area">المنطقة <span class="required">*</span></label>
+                                    <input type="text" id="area" name="area" class="form-input" placeholder="مثال: المنطقة الأولى، أسيوط الجديدة">
+                                </div>
+                            </div>
 
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="purpose">الغرض من الشراء <span class="required">*</span></label>
-                        <select id="purpose" name="purpose" class="form-select">
-                            <option value="">اختر الغرض</option>
-                            <option value="سكن">سكن شخصي</option>
-                            <option value="استثمار">استثمار</option>
-                        </select>
-                    </div>
+                            <div class="form-row">
+                                <div class="form-group common-field">
+                                    <label class="form-label" for="space">المساحة (متر مربع) <span class="required">*</span></label>
+                                    <input type="text" id="space" name="space" class="form-input" placeholder="مثال: 150 م">
+                                </div>
 
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="seriousness">مدى الجدية <span class="required">*</span></label>
-                        <select id="seriousness" name="seriousness" class="form-select">
-                            <option value="">اختر</option>
-                            <option value="جاهز أشتري فوراً">جاهز للشراء فوراً</option>
-                            <option value="خلال شهر">خلال شهر</option>
-                            <option value="لسه بدور">لا زلت أبحث</option>
-                        </select>
-                    </div>
+                                <div class="form-group common-field">
+                                    <label class="form-label" for="rooms">عدد الغرف <span class="required">*</span></label>
+                                    <input type="text" id="rooms" name="rooms" class="form-input" placeholder="3">
+                                </div>
+                            </div>
 
-                    <div class="form-group buyer-field" style="display: none;">
-                        <label class="form-label" for="deliveryTime">موعد الاستلام <span class="required">*</span></label>
-                        <select id="deliveryTime" name="deliveryTime" class="form-select">
-                            <option value="">اختر</option>
-                            <option value="فوري">فوري - جاهز للسكن</option>
-                            <option value="تحت الإنشاء">تحت الإنشاء</option>
-                        </select>
-                    </div>
+                            <div class="form-group common-field">
+                                <label class="form-label" for="bathrooms">عدد الحمامات <span class="required">*</span></label>
+                                <input type="text" id="bathrooms" name="bathrooms" class="form-input" placeholder="2">
+                            </div>
 
-                    <!-- Renter Specific Fields -->
-                    <div class="form-group renter-field" style="display: none;">
-                        <label class="form-label" for="monthlyBudget">الميزانية الشهرية <span class="required">*</span></label>
-                        <input type="text" 
-                               id="monthlyBudget" 
-                               name="monthlyBudget" 
-                               class="form-input" 
-                               placeholder="مثال: من 2,000 إلى 3,000 جنيه">
-                    </div>
+                            <!-- Seller Fields -->
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="floor">الدور <span class="required">*</span></label>
+                                <input type="text" id="floor" name="floor" class="form-input" placeholder="مثال: الدور الثالث">
+                            </div>
 
-                    <div class="form-group renter-field" style="display: none;">
-                        <label class="form-label" for="isFurnished">مفروشة؟ <span class="required">*</span></label>
-                        <select id="isFurnished" name="isFurnished" class="form-select">
-                            <option value="">اختر</option>
-                            <option value="نعم">نعم - مفروشة</option>
-                            <option value="لا">لا - غير مفروشة</option>
-                            <option value="غير مهم">غير مهم</option>
-                        </select>
-                    </div>
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="finishing">حالة التشطيب <span class="required">*</span></label>
+                                <select id="finishing" name="finishing" class="form-select">
+                                    <option value="">اختر حالة التشطيب</option>
+                                    <option value="طوب احمر">طوب احمر</option>
+                                    <option value="نصف تشطيب">نصف تشطيب</option>
+                                    <option value="3/4 تشطيب">3/4 تشطيب</option>
+                                    <option value="تشطيب عادي">تشطيب عادي</option>
+                                    <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
+                                    <option value="تشطيب فاخر">تشطيب فاخر</option>
+                                </select>
+                            </div>
 
-                    <div class="form-row">
-                        <div class="form-group renter-field" style="display: none;">
-                            <label class="form-label" for="rentDuration">المدة المطلوبة <span class="required">*</span></label>
-                            <input type="text" 
-                                   id="rentDuration" 
-                                   name="rentDuration" 
-                                   class="form-input" 
-                                   placeholder="مثال: سنة واحدة">
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="price">السعر المطلوب <span class="required">*</span></label>
+                                <input type="text" id="price" name="price" class="form-input" placeholder="مثال: 500,000 جنيه">
+                            </div>
+
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="paymentMethod">طريقة الدفع <span class="required">*</span></label>
+                                <select id="paymentMethod" name="paymentMethod" class="form-select">
+                                    <option value="">اختر طريقة الدفع</option>
+                                    <option value="كاش">كاش</option>
+                                    <option value="تقسيط">تقسيط</option>
+                                    <option value="كاش وتقسيط">كاش وتقسيط</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="utilities">جاهزية المرافق <span class="required">*</span></label>
+                                <textarea id="utilities" name="utilities" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="documentsReady">هل أوراق الملكية جاهزة؟ <span class="required">*</span></label>
+                                <select id="documentsReady" name="documentsReady" class="form-select">
+                                    <option value="">اختر</option>
+                                    <option value="نعم">نعم - جاهزة</option>
+                                    <option value="قيد الإجراء">قيد الإجراء</option>
+                                    <option value="لا">لا - غير جاهزة</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group seller-field" style="display: none;">
+                                <label class="form-label" for="isRented">هل الوحدة مؤجرة حالياً؟ <span class="required">*</span></label>
+                                <select id="isRented" name="isRented" class="form-select" onchange="toggleSellerRentDetails(this)">
+                                    <option value="">اختر</option>
+                                    <option value="لا">لا</option>
+                                    <option value="نعم">نعم</option>
+                                </select>
+                            </div>
+
+                            <div id="sellerRentDetails" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group seller-field">
+                                        <label class="form-label" for="rentPeriodSeller">المدة المؤجرة</label>
+                                        <input type="text" id="rentPeriodSeller" name="rentPeriodSeller" class="form-input" placeholder="مثال: سنة واحدة">
+                                    </div>
+
+                                    <div class="form-group seller-field">
+                                        <label class="form-label" for="rentEndDateSeller">تاريخ انتهاء الإيجار</label>
+                                        <input type="date" id="rentEndDateSeller" name="rentEndDateSeller" class="form-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Buyer Fields -->
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="budget">الميزانية <span class="required">*</span></label>
+                                <input type="text" id="budget" name="budget" class="form-input" placeholder="مثال: من 500,000 إلى 700,000 جنيه">
+                            </div>
+
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="paymentMethodBuyer">طريقة الدفع المفضلة <span class="required">*</span></label>
+                                <select id="paymentMethodBuyer" name="paymentMethodBuyer" class="form-select">
+                                    <option value="">اختر طريقة الدفع</option>
+                                    <option value="كاش">كاش</option>
+                                    <option value="تقسيط">تقسيط</option>
+                                    <option value="تمويل بنكي">تمويل بنكي</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="finishingRequired">التشطيب المطلوب <span class="required">*</span></label>
+                                <select id="finishingRequired" name="finishingRequired" class="form-select">
+                                    <option value="">اختر حالة التشطيب</option>
+                                    <option value="طوب احمر">طوب احمر</option>
+                                    <option value="نصف تشطيب">نصف تشطيب</option>
+                                    <option value="3/4 تشطيب">3/4 تشطيب</option>
+                                    <option value="تشطيب عادي">تشطيب عادي</option>
+                                    <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
+                                    <option value="تشطيب فاخر">تشطيب فاخر</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="purpose">الغرض من الشراء <span class="required">*</span></label>
+                                <select id="purpose" name="purpose" class="form-select">
+                                    <option value="">اختر الغرض</option>
+                                    <option value="سكن">سكن شخصي</option>
+                                    <option value="استثمار">استثمار</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="seriousness">مدى الجدية <span class="required">*</span></label>
+                                <select id="seriousness" name="seriousness" class="form-select">
+                                    <option value="">اختر</option>
+                                    <option value="جاهز أشتري فوراً">جاهز للشراء فوراً</option>
+                                    <option value="خلال شهر">خلال شهر</option>
+                                    <option value="لسه بدور">لا زلت أبحث</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group buyer-field" style="display: none;">
+                                <label class="form-label" for="deliveryTime">موعد الاستلام <span class="required">*</span></label>
+                                <select id="deliveryTime" name="deliveryTime" class="form-select">
+                                    <option value="">اختر</option>
+                                    <option value="فوري">فوري - جاهز للسكن</option>
+                                    <option value="تحت الإنشاء">تحت الإنشاء</option>
+                                </select>
+                            </div>
+
+                            <!-- Renter Fields -->
+                            <div class="form-group renter-field" style="display: none;">
+                                <label class="form-label" for="monthlyBudget">الميزانية الشهرية <span class="required">*</span></label>
+                                <input type="text" id="monthlyBudget" name="monthlyBudget" class="form-input" placeholder="مثال: من 2,000 إلى 3,000 جنيه">
+                            </div>
+
+                            <div class="form-group renter-field" style="display: none;">
+                                <label class="form-label" for="isFurnished">مفروشة؟ <span class="required">*</span></label>
+                                <select id="isFurnished" name="isFurnished" class="form-select">
+                                    <option value="">اختر</option>
+                                    <option value="نعم">نعم - مفروشة</option>
+                                    <option value="لا">لا - غير مفروشة</option>
+                                    <option value="غير مهم">غير مهم</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group renter-field" style="display: none;">
+                                    <label class="form-label" for="rentDuration">المدة المطلوبة <span class="required">*</span></label>
+                                    <input type="text" id="rentDuration" name="rentDuration" class="form-input" placeholder="مثال: سنة واحدة">
+                                </div>
+
+                                <div class="form-group renter-field" style="display: none;">
+                                    <label class="form-label" for="moveDate">موعد الانتقال <span class="required">*</span></label>
+                                    <input type="date" id="moveDate" name="moveDate" class="form-input">
+                                </div>
+                            </div>
+
+                            <div class="form-group renter-field" style="display: none;">
+                                <label class="form-label" for="usagePurpose">الغرض من الاستخدام <span class="required">*</span></label>
+                                <input type="text" id="usagePurpose" name="usagePurpose" class="form-input" placeholder="مثال: سكن عائلي، مكتب...">
+                            </div>
+
+                            <div class="form-group renter-field" style="display: none;">
+                                <label class="form-label" for="finishingRenter">حالة التشطيب <span class="required">*</span></label>
+                                <select id="finishingRenter" name="finishingRenter" class="form-select">
+                                    <option value="">اختر حالة التشطيب</option>
+                                    <option value="طوب احمر">طوب احمر</option>
+                                    <option value="نصف تشطيب">نصف تشطيب</option>
+                                    <option value="3/4 تشطيب">3/4 تشطيب</option>
+                                    <option value="تشطيب عادي">تشطيب عادي</option>
+                                    <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
+                                    <option value="تشطيب فاخر">تشطيب فاخر</option>
+                                </select>
+                            </div>
+
+                            <!-- Landlord Fields -->
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="floorLandlord">الدور <span class="required">*</span></label>
+                                <input type="text" id="floorLandlord" name="floorLandlord" class="form-input" placeholder="مثال: الدور الثالث">
+                            </div>
+
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="isFurnishedLandlord">مفروشة؟ <span class="required">*</span></label>
+                                <select id="isFurnishedLandlord" name="isFurnishedLandlord" class="form-select">
+                                    <option value="">اختر</option>
+                                    <option value="نعم">نعم - مفروشة</option>
+                                    <option value="لا">لا - غير مفروشة</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="finishingLandlord">حالة التشطيب <span class="required">*</span></label>
+                                <select id="finishingLandlord" name="finishingLandlord" class="form-select">
+                                    <option value="">اختر حالة التشطيب</option>
+                                    <option value="طوب احمر">طوب احمر</option>
+                                    <option value="نصف تشطيب">نصف تشطيب</option>
+                                    <option value="3/4 تشطيب">3/4 تشطيب</option>
+                                    <option value="تشطيب عادي">تشطيب عادي</option>
+                                    <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
+                                    <option value="تشطيب فاخر">تشطيب فاخر</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="monthlyRent">الإيجار الشهري المطلوب <span class="required">*</span></label>
+                                <input type="text" id="monthlyRent" name="monthlyRent" class="form-input" placeholder="مثال: 3,000 جنيه شهرياً">
+                            </div>
+
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="availableFrom">متاح من تاريخ</label>
+                                <input type="date" id="availableFrom" name="availableFrom" class="form-input">
+                            </div>
+
+                            <div class="form-group landlord-field" style="display: none;">
+                                <label class="form-label" for="utilitiesLandlord">جاهزية المرافق <span class="required">*</span></label>
+                                <textarea id="utilitiesLandlord" name="utilitiesLandlord" class="form-textarea" placeholder="مثال: كهرباء، مياه، غاز طبيعي..." rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group common-field">
+                                <label class="form-label" for="notes">ملاحظات إضافية</label>
+                                <textarea id="notes" name="notes" class="form-textarea" placeholder="أي معلومات إضافية تود مشاركتها معنا..." rows="3"></textarea>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="terms-container">
+                                <label class="terms-checkbox-wrapper">
+                                    <input type="checkbox" id="termsCheckbox" required>
+                                    <span class="terms-label">
+                                        أوافق على <span class="terms-link" onclick="openTermsModal()">الشروط والأحكام</span> وسياسة الخصوصية الخاصة بمعالجة بياناتي الشخصية
+                                        <span class="required">*</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-secondary" onclick="goToStep1()">← رجوع</button>
+                                <button type="submit" class="btn btn-primary">إرسال الطلب ✓</button>
+                            </div>
                         </div>
-
-                        <div class="form-group renter-field" style="display: none;">
-                            <label class="form-label" for="moveDate">موعد الانتقال <span class="required">*</span></label>
-                            <input type="date" id="moveDate" name="moveDate" class="form-input">
-                        </div>
-                    </div>
-
-                    <div class="form-group renter-field" style="display: none;">
-                        <label class="form-label" for="usagePurpose">الغرض من الاستخدام <span class="required">*</span></label>
-                        <input type="text" 
-                               id="usagePurpose" 
-                               name="usagePurpose" 
-                               class="form-input" 
-                               placeholder="مثال: سكن عائلي، مكتب...">
-                    </div>
-
-                    <div class="form-group renter-field" style="display: none;">
-                        <label class="form-label" for="finishingRenter">حالة التشطيب <span class="required">*</span></label>
-                        <select id="finishingRenter" name="finishingRenter" class="form-select">
-                            <option value="">اختر حالة التشطيب</option>
-                            <option value="طوب احمر">طوب احمر</option>
-                            <option value="نصف تشطيب">نصف تشطيب</option>
-                            <option value="3/4 تشطيب">3/4 تشطيب</option>
-                            <option value="تشطيب عادي">تشطيب عادي</option>
-                            <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
-                            <option value="تشطيب فاخر">تشطيب فاخر</option>
-                        </select>
-                    </div>
-
-                    <!-- Landlord Specific Fields -->
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="floorLandlord">الدور <span class="required">*</span></label>
-                        <input type="text" 
-                               id="floorLandlord" 
-                               name="floorLandlord" 
-                               class="form-input" 
-                               placeholder="مثال: الدور الثالث">
-                    </div>
-
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="isFurnishedLandlord">مفروشة؟ <span class="required">*</span></label>
-                        <select id="isFurnishedLandlord" name="isFurnishedLandlord" class="form-select">
-                            <option value="">اختر</option>
-                            <option value="نعم">نعم - مفروشة</option>
-                            <option value="لا">لا - غير مفروشة</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="finishingLandlord">حالة التشطيب <span class="required">*</span></label>
-                        <select id="finishingLandlord" name="finishingLandlord" class="form-select">
-                            <option value="">اختر حالة التشطيب</option>
-                            <option value="طوب احمر">طوب احمر</option>
-                            <option value="نصف تشطيب">نصف تشطيب</option>
-                            <option value="3/4 تشطيب">3/4 تشطيب</option>
-                            <option value="تشطيب عادي">تشطيب عادي</option>
-                            <option value="تشطيب سوبر لوكس">تشطيب سوبر لوكس</option>
-                            <option value="تشطيب فاخر">تشطيب فاخر</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="monthlyRent">الإيجار الشهري المطلوب <span class="required">*</span></label>
-                        <input type="text" 
-                               id="monthlyRent" 
-                               name="monthlyRent" 
-                               class="form-input" 
-                               placeholder="مثال: 3,000 جنيه شهرياً">
-                    </div>
-
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="availableFrom">متاح من تاريخ</label>
-                        <input type="date" id="availableFrom" name="availableFrom" class="form-input">
-                    </div>
-
-                    <div class="form-group landlord-field" style="display: none;">
-                        <label class="form-label" for="utilitiesLandlord">جاهزية المرافق <span class="required">*</span></label>
-                        <textarea id="utilitiesLandlord" 
-                                  name="utilitiesLandlord" 
-                                  class="form-textarea" 
-                                  placeholder="مثال: كهرباء، مياه، غاز طبيعي..." 
-                                  rows="3"></textarea>
-                    </div>
-
-                    <!-- Additional Notes -->
-                    <div class="form-group common-field">
-                        <label class="form-label" for="notes">ملاحظات إضافية</label>
-                        <textarea id="notes" 
-                                  name="notes" 
-                                  class="form-textarea" 
-                                  placeholder="أي معلومات إضافية تود مشاركتها معنا..." 
-                                  rows="3"></textarea>
-                    </div>
-
-                    <!-- Terms & Conditions -->
-                    <div class="terms-container">
-                        <label class="terms-checkbox-wrapper">
-                            <input type="checkbox" id="termsCheckbox" required>
-                            <span class="terms-label">
-                                أوافق على <span class="terms-link" onclick="openTermsModal()">الشروط والأحكام</span> وسياسة الخصوصية الخاصة بمعالجة بياناتي الشخصية
-                                <span class="required">*</span>
-                            </span>
-                        </label>
-                    </div>
-
-                    <div class="btn-container">
-                        <button type="button" class="btn btn-secondary" onclick="goToStep1()">← رجوع</button>
-                        <button type="submit" class="btn btn-primary">إرسال الطلب ✓</button>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- =====================================================
-     ABOUT SECTION
-===================================================== -->
+<!-- ==================== ABOUT SECTION ==================== -->
 <section class="section" id="about">
     <h2 class="section-title">من هي ريماكس براح؟</h2>
     <p class="section-subtitle">الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و رقم 1 صعيد مصر</p>
@@ -2824,9 +2360,7 @@ footer p {
     </div>
 </section>
 
-<!-- =====================================================
-     WHY CHOOSE SECTION
-===================================================== -->
+<!-- ==================== WHY CHOOSE SECTION ==================== -->
 <section class="section" id="why-choose">
     <h2 class="section-title">لماذا تختار ريماكس براح؟</h2>
     <p class="section-subtitle">نحن شريكك الأمثل في رحلتك العقارية</p>
@@ -2851,9 +2385,7 @@ footer p {
     </div>
 </section>
 
-<!-- =====================================================
-     SERVICES SECTION
-===================================================== -->
+<!-- ==================== SERVICES SECTION ==================== -->
 <section class="section services-section" id="services">
     <h2 class="section-title">خدماتنا العقارية المتكاملة</h2>
     <p class="section-subtitle">نقدم لك كل ما تحتاجه في رحلتك العقارية</p>
@@ -2880,9 +2412,7 @@ footer p {
     </div>
 </section>
 
-<!-- =====================================================
-     SOCIAL MEDIA SECTION
-===================================================== -->
+<!-- ==================== SOCIAL MEDIA SECTION ==================== -->
 <section class="section social-section">
     <h2 class="section-title">تابعنا على وسائل التواصل</h2>
     <p class="section-subtitle">كن على اطلاع دائم بكل جديد في السوق العقاري</p>
@@ -2939,10 +2469,7 @@ footer p {
     </div>
 </section>
 
-
-<!-- =====================================================
-     LOCATION SECTION
-===================================================== -->
+<!-- ==================== LOCATION SECTION ==================== -->
 <section class="section location-section" id="location">
     <h2 class="section-title">موقعنا</h2>
     <div class="location-wrapper">
@@ -2972,17 +2499,14 @@ footer p {
                 <i class="fas fa-clock"></i>
                 <div class="location-detail-text">
                     <h4>وقت العمل</h4>
-                   <p>ساعات العمل: السبت - الخميس من 11:00 صباحًا إلى 8:00 مساءً</p>
+                    <p>ساعات العمل: السبت - الخميس من 11:00 صباحًا إلى 8:00 مساءً</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- =====================================================
-     TERMS & CONDITIONS MODAL
-===================================================== -->
+<!-- ==================== TERMS MODAL ==================== -->
 <div id="termsModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -3042,9 +2566,8 @@ footer p {
         </div>
     </div>
 </div>
-<!-- =====================================================
-     CONFIRMATION MODAL
-===================================================== -->
+
+<!-- ==================== CONFIRMATION MODAL ==================== -->
 <div id="confirmationModal" class="confirmation-modal">
     <div class="confirmation-modal-content">
         <div class="confirmation-icon" id="confirmationIcon">✓</div>
@@ -3054,121 +2577,188 @@ footer p {
     </div>
 </div>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- ==================== FOOTER ==================== -->
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="images/LOGO (1).png" alt="RE/MAX BARAH" />
+            <img src="images/LOGO.png" alt="RE/MAX BARAH" />
         </div>
         <div class="footer-divider"></div>
         <p>الوكيل المعتمد لشركة ريماكس العالمية في أسيوط و رقم 1 في صعيد مصر</p>
         <p style="margin-top: 8px;">نساعدك في تحقيق أحلامك العقارية بأمان واحترافية عالية</p>
         <p class="copyright">© 2025 RE/MAX BARAH - جميع الحقوق محفوظة</p>
-        <p class="copyright" style="margin-top: 8px; opacity: 0.6; font-size: 9px;">
+        <p class="copyright" style="margin-top: 8px; opacity: 0.5; font-size: 8px;">
             © 2025 Muhamed Ayman - Design & Development
         </p>
     </div>
 </footer>
-<!-- =====================================================
-     JAVASCRIPT CODE - FULLY FIXED
-===================================================== -->
-<script>
-// =====================================================
-// 1. CONFIGURATION & CONSTANTS
-// =====================================================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhfvp-HI3POFWew22YGIfQkQ--TqIFw-f6baIQoS1jlC3IwUnAHGNc5iG_VtRZpKvy8w/exec';
 
-// =====================================================
-// 2. PERFORMANCE OPTIMIZATION
-// =====================================================
-// Lazy load images
-if ('loading' in HTMLImageElement.prototype) {
-    document.querySelectorAll('img').forEach(img => {
-        img.loading = 'lazy';
-    });
+<script>
+// ==================== CONFIGURATION ====================
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkBgodMBs3OVyGtN0i2hzqxMg0knrqDklmDDGWOUWYAaA2tkJOXJukk8gdYKQzi2gAXg/exec';
+
+// ==================== UTILITY FUNCTIONS ====================
+// Validate Script URL
+function validateScriptURL() {
+    if (!SCRIPT_URL || !SCRIPT_URL.includes('script.google.com')) {
+        console.error('❌ Invalid or missing Google Apps Script URL');
+        return false;
+    }
+    return true;
 }
 
-// Defer non-critical CSS
-function loadDeferredStyles() {
-    const addStylesNode = document.getElementById("deferred-styles");
-    if (addStylesNode) {
-        const replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement);
-        addStylesNode.parentElement.removeChild(addStylesNode);
+// Check online status
+function isOnline() {
+    return navigator.onLine;
+}
+
+// Sanitize user input
+function sanitizeInput(input) {
+    if (!input) return '';
+    return input.trim().replace(/[<>\"']/g, '').substring(0, 500);
+}
+
+// ==================== RATE LIMITER CLASS ====================
+class RateLimiter {
+    constructor(maxAttempts = 5, windowMs = 60000) {
+        this.maxAttempts = maxAttempts;
+        this.windowMs = windowMs;
+        this.attempts = [];
+    }
+
+    isAllowed() {
+        const now = Date.now();
+        this.attempts = this.attempts.filter(time => now - time < this.windowMs);
+        
+        if (this.attempts.length >= this.maxAttempts) {
+            return false;
+        }
+        
+        this.attempts.push(now);
+        return true;
+    }
+
+    getRemainingTime() {
+        if (this.attempts.length === 0) return 0;
+        return Math.ceil((this.windowMs - (Date.now() - this.attempts[0])) / 1000);
     }
 }
 
-// Load deferred content after page load
-window.addEventListener('load', function() {
-    loadDeferredStyles();
-});
+const formRateLimiter = new RateLimiter(5, 60000);
 
-// Intersection Observer for lazy loading sections
-const observerOptions = {
-    root: null,
-    rootMargin: '50px',
-    threshold: 0.1
-};
+// ==================== VALIDATION FUNCTIONS ====================
+// Validate phone number
+function validatePhoneNumber(phone, countryCode, fieldName) {
+    const phoneValidationRules = {
+        '+20': { 
+            regex: /^(010|011|012|015)[0-9]{8}$/,
+            message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015 ويكون 11 رقم`
+        },
+        '+966': { regex: /^(5[0-9]{8})$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يبدأ بـ 5 ويكون 9 أرقام` },
+        '+971': { regex: /^(5[0-9]{8})$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يبدأ بـ 5 ويكون 9 أرقام` },
+        '+965': { regex: /^[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 8 أرقام` },
+        '+974': { regex: /^[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 8 أرقام` },
+        '+968': { regex: /^[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 8 أرقام` },
+        '+973': { regex: /^[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 8 أرقام` },
+        '+962': { regex: /^7[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يبدأ بـ 7 ويكون 9 أرقام` },
+        '+961': { regex: /^[0-9]{8}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 8 أرقام` },
+        '+1': { regex: /^[0-9]{10}$/, message: `❌ ${fieldName} غير صحيح\n✅ يجب أن يكون 10 أرقام` }
+    };
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            sectionObserver.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+    if (!countryCode) {
+        return { valid: false, message: `${fieldName}: الرجاء اختيار كود الدولة` };
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.section').forEach(section => {
-        sectionObserver.observe(section);
-    });
-});
-
-// =====================================================
-// 3. MAP LAZY LOADING
-// =====================================================
-let mapLoaded = false;
-
-function loadMap() {
-    if (mapLoaded) return;
+    const cleanPhone = phone.replace(/\s+/g, '');
     
-    const mapContainer = document.getElementById('mapContainer');
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890';
-    iframe.allowFullscreen = true;
-    iframe.loading = 'lazy';
-    iframe.referrerPolicy = 'no-referrer-when-downgrade';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.border = 'none';
+    if (!cleanPhone) {
+        return { valid: false, message: `${fieldName}: الرجاء إدخال رقم الهاتف` };
+    }
     
-    mapContainer.appendChild(iframe);
-    mapContainer.classList.add('map-loaded');
-    mapLoaded = true;
+    const rule = phoneValidationRules[countryCode];
+    
+    if (!rule) {
+        return { valid: false, message: `${fieldName}: كود الدولة غير مدعوم` };
+    }
+    
+    if (!rule.regex.test(cleanPhone)) {
+        return { valid: false, message: rule.message };
+    }
+    
+    return { valid: true, cleanPhone: cleanPhone };
 }
 
-// Auto-load map when scrolling near location section
-const locationSection = document.getElementById('location');
-if (locationSection) {
-    const mapObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !mapLoaded) {
-                setTimeout(loadMap, 500);
-                mapObserver.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '200px' });
+// Validate name
+function validateName(name) {
+    if (!name || name.length < 3) {
+        return { valid: false, message: 'الرجاء إدخال اسمك الكامل (3 أحرف على الأقل)' };
+    }
     
-    mapObserver.observe(locationSection);
+    const nameRegex = /^[\u0600-\u06FFa-zA-Z\s]+$/;
+    if (!nameRegex.test(name)) {
+        return { valid: false, message: 'الاسم يجب أن يحتوي على حروف عربية أو إنجليزية فقط' };
+    }
+    
+    return { valid: true };
 }
 
-// =====================================================
-// 4. MENU FUNCTIONS
-// =====================================================
+// Sanitize user input
+function sanitizeInput(input) {
+    if (!input) return '';
+    return input.trim().replace(/[<>\"']/g, '').substring(0, 500);
+}
+
+// ==================== UI FUNCTIONS ====================
+// Show message
+function showMessage(text, type) {
+    const messageBox = document.getElementById('messageBox');
+    messageBox.textContent = text;
+    messageBox.className = `message ${type}`;
+    messageBox.style.display = 'block';
+    
+    if (type !== 'error') {
+        setTimeout(() => messageBox.style.display = 'none', 6000);
+    }
+}
+
+// Show confirmation modal
+function showConfirmationModal(type, title, message) {
+    const modal = document.getElementById('confirmationModal');
+    const icon = document.getElementById('confirmationIcon');
+    const titleEl = document.getElementById('confirmationTitle');
+    const messageEl = document.getElementById('confirmationMessage');
+
+    if (type === 'success') {
+        icon.innerHTML = '✓';
+        icon.className = 'confirmation-icon success';
+    } else {
+        icon.innerHTML = '✕';
+        icon.className = 'confirmation-icon error';
+    }
+
+    titleEl.textContent = title;
+    messageEl.textContent = message;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close confirmation modal
+function closeConfirmationModal() {
+    const modal = document.getElementById('confirmationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.reset();
+        goToStep1();
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==================== NAVIGATION FUNCTIONS ====================
+// Toggle menu
 function toggleMenu() {
     const navMenu = document.getElementById('navMenu');
     const hamburger = document.querySelector('.hamburger');
@@ -3182,88 +2772,57 @@ function toggleMenu() {
     }
 }
 
+// Close menu
 function closeMenu() {
     const navMenu = document.getElementById('navMenu');
     const hamburger = document.querySelector('.hamburger');
     navMenu.classList.remove('active');
     hamburger.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
 }
 
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const navMenu = document.getElementById('navMenu');
-    const hamburger = document.querySelector('.hamburger');
-    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
-    
-    if (!isClickInside && navMenu.classList.contains('active')) {
-        closeMenu();
-    }
-});
-
-// Hamburger animation
-const hamburger = document.querySelector('.hamburger');
-if (hamburger) {
-    hamburger.addEventListener('click', function() {
-        const spans = this.querySelectorAll('span');
-        if (this.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(7px, 7px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
-        } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    });
-}
-
-// =====================================================
-// 5. SMOOTH SCROLL
-// =====================================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// =====================================================
-// 6. MODAL FUNCTIONS
-// =====================================================
+// ==================== MODAL FUNCTIONS ====================
+// Open terms modal
 function openTermsModal() {
-    document.getElementById('termsModal').classList.add('active');
+    const modal = document.getElementById('termsModal');
+    modal.classList.add('active');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'termsModalTitle');
     document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+        const closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) closeBtn.focus();
+    }, 100);
+    
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            closeTermsModal();
+            document.removeEventListener('keydown', handleEscape);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
 }
 
+// Close terms modal
 function closeTermsModal() {
-    document.getElementById('termsModal').classList.remove('active');
+    const modal = document.getElementById('termsModal');
+    modal.classList.remove('active');
+    modal.removeAttribute('role');
+    modal.removeAttribute('aria-modal');
+    modal.removeAttribute('aria-labelledby');
     document.body.style.overflow = 'auto';
 }
 
+// Accept terms
 function acceptTerms() {
     document.getElementById('termsCheckbox').checked = true;
     closeTermsModal();
 }
 
-// Close modal when clicking outside
-window.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('termsModal');
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeTermsModal();
-            }
-        });
-    }
-});
-
-// =====================================================
-// 7. FORM STEP NAVIGATION
-// =====================================================
+// ==================== FORM NAVIGATION ====================
+// Go to step 2
 function goToStep2() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
@@ -3272,35 +2831,24 @@ function goToStep2() {
     const whatsappCountryCode = document.getElementById('whatsappCountryCode').value;
     const agent = document.getElementById('agent').value;
     const clientType = document.querySelector('input[name="clientType"]:checked');
-    
-    // NEW: Contact Method & Time
     const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
-    const preferredHour = document.getElementById('preferredHour').value;
-    const preferredPeriod = document.getElementById('preferredPeriod').value;
 
-    // ================================
-    // Validation - Required fields only
-    // ================================
     if (!agent) {
-        showMessage('الرجاء اختيار المستشار العقاري الذي تتعامل معه', 'error');
+        showMessage('الرجاء اختيار المستشار العقاري', 'error');
         document.getElementById('agent').focus();
         return;
     }
 
-    if (!name) {
-        showMessage('الرجاء إدخال اسمك الكامل', 'error');
+    const nameValidation = validateName(name);
+    if (!nameValidation.valid) {
+        showMessage(nameValidation.message, 'error');
         document.getElementById('name').focus();
         return;
     }
 
-    if (!phoneCountryCode) {
-        showMessage('الرجاء اختيار كود الدولة لرقم الهاتف', 'error');
-        document.getElementById('phoneCountryCode').focus();
-        return;
-    }
-
-    if (!phone) {
-        showMessage('الرجاء إدخال رقم الهاتف الخاص بك', 'error');
+    const phoneValidation = validatePhoneNumber(phone, phoneCountryCode, 'رقم الهاتف');
+    if (!phoneValidation.valid) {
+        showMessage(phoneValidation.message, 'error');
         document.getElementById('phone').focus();
         return;
     }
@@ -3310,61 +2858,30 @@ function goToStep2() {
         return;
     }
 
-    // NEW: Check if WhatsApp is selected but number is missing
     if (contactMethod && contactMethod.value === 'واتساب') {
         if (!whatsapp || !whatsappCountryCode) {
             showMessage('⚠️ يجب إدخال رقم الواتساب إذا اخترت التواصل عبر الواتساب', 'error');
             document.getElementById('whatsapp').focus();
             return;
         }
+        
+        const whatsappValidation = validatePhoneNumber(whatsapp, whatsappCountryCode, 'رقم الواتساب');
+        if (!whatsappValidation.valid) {
+            showMessage(whatsappValidation.message, 'error');
+            document.getElementById('whatsapp').focus();
+            return;
+        }
     }
 
-    // ================================
-    // Phone number validation
-    // ================================
-    const phoneValidationRules = {
-        '+20': { regex: /^(0?(10|11|12|15)[0-9]{8})$/, message: 'رقم مصري غير صحيح، يجب أن يكون 10 أرقام تبدأ بـ 010 / 011 / 012 / 015' },
-        '+966': { regex: /^\d{9}$/, message: 'رقم سعودي غير صحيح، يجب أن يكون 9 أرقام' },
-        '+971': { regex: /^\d{9}$/, message: 'رقم إماراتي غير صحيح، يجب أن يكون 9 أرقام' },
-        '+965': { regex: /^\d{8}$/, message: 'رقم كويتي غير صحيح، يجب أن يكون 8 أرقام' },
-        '+974': { regex: /^\d{8}$/, message: 'رقم قطري غير صحيح، يجب أن يكون 8 أرقام' },
-        '+968': { regex: /^\d{8}$/, message: 'رقم عماني غير صحيح، يجب أن يكون 8 أرقام' },
-        '+973': { regex: /^\d{8}$/, message: 'رقم بحريني غير صحيح، يجب أن يكون 8 أرقام' },
-        '+962': { regex: /^\d{9}$/, message: 'رقم أردني غير صحيح، يجب أن يكون 9 أرقام' },
-        '+961': { regex: /^\d{8}$/, message: 'رقم لبناني غير صحيح، يجب أن يكون 8 أرقام' },
-        '+1': { regex: /^\d{10}$/, message: 'رقم أمريكي غير صحيح، يجب أن يكون 10 أرقام' }
-    };
-
-    const cleanPhone = phone.replace(/\s+/g, '');
-    const phoneRule = phoneValidationRules[phoneCountryCode];
-    if (!phoneRule) {
-        showMessage('كود الدولة غير مدعوم حالياً', 'error');
-        return;
-    }
-    if (!phoneRule.regex.test(cleanPhone)) {
-        showMessage(phoneRule.message, 'error');
-        return;
-    }
-
-    // ================================
-    // WhatsApp validation 
-    // ================================
     if (whatsapp && whatsappCountryCode) {
-        const cleanWhatsapp = whatsapp.replace(/\s+/g, '');
-        const whatsappRule = phoneValidationRules[whatsappCountryCode];
-        if (!whatsappRule) {
-            showMessage('كود الدولة لرقم الواتساب غير مدعوم', 'error');
-            return;
-        }
-        if (!whatsappRule.regex.test(cleanWhatsapp)) {
-            showMessage('رقم واتساب غير صحيح، تأكد من كتابته بدون مسافات أو رموز', 'error');
+        const whatsappValidation = validatePhoneNumber(whatsapp, whatsappCountryCode, 'رقم الواتساب');
+        if (!whatsappValidation.valid) {
+            showMessage(whatsappValidation.message, 'error');
+            document.getElementById('whatsapp').focus();
             return;
         }
     }
-    
-    // ================================
-    // Progress & Transition
-    // ================================
+
     document.getElementById('progressStep1').classList.add('completed');
     document.getElementById('progressStep1').classList.remove('active');
     document.getElementById('progressStep2').classList.add('active');
@@ -3373,12 +2890,13 @@ function goToStep2() {
     document.getElementById('step1').classList.remove('active');
     document.getElementById('step2').classList.add('active');
     updateFormFields();
-    document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth' });
+    
+    setTimeout(() => {
+        document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
 
-// =====================================================
-// GO BACK TO STEP 1
-// =====================================================
+// Go to step 1
 function goToStep1() {
     document.getElementById('progressStep2').classList.remove('active');
     document.getElementById('progressStep1').classList.add('active');
@@ -3388,12 +2906,12 @@ function goToStep1() {
     document.getElementById('step2').classList.remove('active');
     document.getElementById('step1').classList.add('active');
     
-    document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+        document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
 
-// =====================================================
-// 8. DYNAMIC FORM FIELDS
-// =====================================================
+// Update form fields based on client type
 function updateFormFields() {
     const clientType = document.querySelector('input[name="clientType"]:checked');
     if (!clientType) return;
@@ -3420,35 +2938,112 @@ function updateFormFields() {
     });
 }
 
+// Toggle seller rent details
 function toggleSellerRentDetails(select) {
     const rentDetails = document.getElementById('sellerRentDetails');
     rentDetails.style.display = select.value === 'نعم' ? 'block' : 'none';
 }
 
-// =====================================================
-// 9. MESSAGE DISPLAY
-// =====================================================
-function showMessage(text, type) {
-    const messageBox = document.getElementById('messageBox');
-    messageBox.textContent = text;
-    messageBox.className = `message ${type}`;
-    messageBox.style.display = 'block';
+// ==================== MAP FUNCTIONS ====================
+let mapLoaded = false;
+
+function loadMap() {
+    if (mapLoaded) return;
     
-    // رسائل الخطأ تبقى ظاهرة حتى يتفاعل المستخدم
-    if (type === 'error') {
-        // لا نخفي الرسالة تلقائياً
-        // ستختفي عند التفاعل مع أي حقل في الفورم
-    } else {
-        // رسائل النجاح تختفي بعد 6 ثواني
-        setTimeout(() => messageBox.style.display = 'none', 6000);
-    }
+    const mapContainer = document.getElementById('mapContainer');
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3417.3282627842817!2d31.1771498!3d27.1925571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14450d52e8ad6ccf%3A0xe0ea63ac89feaea6!2sREMAX%20Barah%20-%20%D8%B1%D9%8A%D9%85%D8%A7%D9%83%D8%B3%20%D8%A8%D8%B1%D8%A7%D8%AD!5e0!3m2!1sar!2seg!4v1634567890';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframe.title = 'خريطة موقع ريماكس براح';
+    
+    mapContainer.appendChild(iframe);
+    mapContainer.classList.add('map-loaded');
+    mapLoaded = true;
 }
 
-// إخفاء رسائل الخطأ عند التفاعل مع الفورم
+// ==================== NETWORK FUNCTIONS ====================
+// Fetch with retry logic and exponential backoff
+async function fetchWithRetry(url, options, maxRetries = 3) {
+    let lastError;
+    
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await fetch(url, {
+                ...options,
+                signal: AbortSignal.timeout(15000) // Increased timeout
+            });
+            
+            // For no-cors mode, we can't check response.ok
+            // If we reach here, the request was sent
+            return response;
+            
+        } catch (error) {
+            lastError = error;
+            console.error(`❌ محاولة ${i + 1} فشلت:`, error);
+            
+            if (i < maxRetries - 1) {
+                const delay = Math.pow(2, i) * 1000;
+                console.log(`⏳ إعادة المحاولة بعد ${delay/1000} ثانية...`);
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+    }
+    
+    throw lastError;
+}
+
+// ==================== EVENT LISTENERS ====================
+// Online/Offline detection
+window.addEventListener('online', () => {
+    showMessage('✅ تم استعادة الاتصال بالإنترنت', 'success');
+});
+
+window.addEventListener('offline', () => {
+    showMessage('❌ فقدت اتصالك بالإنترنت. الرجاء التحقق من الاتصال قبل الإرسال', 'error');
+});
+
+// Close menu on outside click
+document.addEventListener('click', function(event) {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+    
+    if (!isClickInside && navMenu.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// ==================== FORM SUBMISSION ====================
 document.addEventListener('DOMContentLoaded', function() {
+    // Modal click outside to close
+    const modal = document.getElementById('termsModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTermsModal();
+            }
+        });
+    }
+
     const form = document.getElementById('contactForm');
     if (form) {
-        // إخفاء الرسالة عند الكتابة في أي حقل
+        // Clear error messages on input
         form.addEventListener('input', function() {
             const messageBox = document.getElementById('messageBox');
             if (messageBox && messageBox.classList.contains('error')) {
@@ -3456,41 +3051,59 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // إخفاء الرسالة عند التفاعل مع أي select أو radio
+        // Clear error messages on change
         form.addEventListener('change', function() {
             const messageBox = document.getElementById('messageBox');
             if (messageBox && messageBox.classList.contains('error')) {
                 messageBox.style.display = 'none';
             }
         });
-    }
-});
 
-// =====================================================
-// 10. FORM SUBMISSION 
-// =====================================================
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
+        // Form submission handler
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Check online status
+            if (!isOnline()) {
+                showMessage('❌ فقدت اتصالك بالإنترنت. الرجاء التحقق من الاتصال قبل الإرسال', 'error');
+                return;
+            }
+
+            // Rate limiting check
+            if (!formRateLimiter.isAllowed()) {
+                const remaining = formRateLimiter.getRemainingTime();
+                showMessage(`⏳ الرجاء الانتظار ${remaining} ثانية قبل محاولة جديدة`, 'error');
+                return;
+            }
+
+            // Validate Script URL
+            if (!validateScriptURL()) {
+                showConfirmationModal('error', '❌ خطأ في الإعدادات', 'حدث خطأ في إعدادات النظام. الرجاء التواصل مع الدعم الفني');
+                return;
+            }
+
             const clientType = document.querySelector('input[name="clientType"]:checked');
             const termsCheckbox = document.getElementById('termsCheckbox');
+            
+            // Honeypot spam check
+            const honeypot = document.getElementById('website');
+            if (honeypot && honeypot.value !== '') {
+                console.warn('Spam detected');
+                return;
+            }
 
+            // Check terms agreement
             if (!termsCheckbox.checked) {
                 showMessage('يجب الموافقة على الشروط والأحكام قبل إرسال الطلب', 'error');
                 termsCheckbox.focus();
                 return;
             }
 
+            // Get form data
             const phoneCountryCode = document.getElementById('phoneCountryCode').value;
             const whatsappCountryCode = document.getElementById('whatsappCountryCode').value;
             const phone = document.getElementById('phone').value.trim();
             const whatsapp = document.getElementById('whatsapp').value.trim();
-
-            // NEW: Get contact preferences
             const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
             const preferredHour = document.getElementById('preferredHour').value;
             const preferredPeriod = document.getElementById('preferredPeriod').value;
@@ -3500,9 +3113,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 preferredTime = `${preferredHour} ${preferredPeriod}`;
             }
 
+            // Prepare form data object
             const formData = {
-                agent: document.getElementById('agent').value,
-                name: document.getElementById('name').value.trim(),
+                agent: sanitizeInput(document.getElementById('agent').value),
+                name: sanitizeInput(document.getElementById('name').value),
                 phoneCountryCode: phoneCountryCode,
                 phone: phone,
                 whatsappCountryCode: whatsappCountryCode,
@@ -3510,21 +3124,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 contactMethod: contactMethod ? contactMethod.value : '',
                 preferredTime: preferredTime,
                 clientType: clientType ? clientType.value : '',
-                unitType: document.getElementById('unitType').value,
-                area: document.getElementById('area').value.trim(),
-                space: document.getElementById('space').value.trim(),
-                rooms: document.getElementById('rooms').value,
-                bathrooms: document.getElementById('bathrooms').value,
-                floor: document.getElementById('floor').value.trim(),
-                finishing: document.getElementById('finishing').value,
-                utilities: document.getElementById('utilities').value.trim(),
-                price: document.getElementById('price').value.trim(),
+                unitType: sanitizeInput(document.getElementById('unitType').value),
+                area: sanitizeInput(document.getElementById('area').value),
+                space: sanitizeInput(document.getElementById('space').value),
+                rooms: sanitizeInput(document.getElementById('rooms').value),
+                bathrooms: sanitizeInput(document.getElementById('bathrooms').value),
+                floor: sanitizeInput(document.getElementById('floor').value),
+                finishing: sanitizeInput(document.getElementById('finishing').value),
+                utilities: sanitizeInput(document.getElementById('utilities').value),
+                price: sanitizeInput(document.getElementById('price').value),
                 isRented: document.getElementById('isRented').value,
-                rentPeriodSeller: document.getElementById('rentPeriodSeller').value.trim(),
+                rentPeriodSeller: sanitizeInput(document.getElementById('rentPeriodSeller').value),
                 rentEndDateSeller: document.getElementById('rentEndDateSeller').value,
                 documentsReady: document.getElementById('documentsReady').value,
                 paymentMethod: document.getElementById('paymentMethod').value,
-                budget: document.getElementById('budget').value.trim(),
+                budget: sanitizeInput(document.getElementById('budget').value),
                 paymentMethodBuyer: document.getElementById('paymentMethodBuyer').value,
                 finishingRequired: document.getElementById('finishingRequired').value,
                 purpose: document.getElementById('purpose').value,
@@ -3532,95 +3146,143 @@ document.addEventListener('DOMContentLoaded', function() {
                 deliveryTime: document.getElementById('deliveryTime').value,
                 isFurnished: document.getElementById('isFurnished').value,
                 finishingRenter: document.getElementById('finishingRenter').value,
-                monthlyBudget: document.getElementById('monthlyBudget').value.trim(),
-                rentDuration: document.getElementById('rentDuration').value.trim(),
+                monthlyBudget: sanitizeInput(document.getElementById('monthlyBudget').value),
+                rentDuration: sanitizeInput(document.getElementById('rentDuration').value),
                 moveDate: document.getElementById('moveDate').value,
-                usagePurpose: document.getElementById('usagePurpose').value.trim(),
-                floorLandlord: document.getElementById('floorLandlord').value.trim(),
+                usagePurpose: sanitizeInput(document.getElementById('usagePurpose').value),
+                floorLandlord: sanitizeInput(document.getElementById('floorLandlord').value),
                 isFurnishedLandlord: document.getElementById('isFurnishedLandlord').value,
                 finishingLandlord: document.getElementById('finishingLandlord').value,
-                monthlyRent: document.getElementById('monthlyRent').value.trim(),
+                monthlyRent: sanitizeInput(document.getElementById('monthlyRent').value),
                 availableFrom: document.getElementById('availableFrom').value,
-                utilitiesLandlord: document.getElementById('utilitiesLandlord').value.trim(),
-                notes: document.getElementById('notes').value.trim(),
+                utilitiesLandlord: sanitizeInput(document.getElementById('utilitiesLandlord').value),
+                notes: sanitizeInput(document.getElementById('notes').value),
                 timestamp: new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' })
             };
 
+            // Validate required fields
             if (!formData.name || !formData.phone || !formData.clientType) {
                 showConfirmationModal('error', '❌ خطأ في البيانات', 'الرجاء التأكد من إدخال الاسم ورقم الهاتف ونوع العميل بشكل صحيح');
                 return;
             }
 
+            // Disable submit button
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '⏳ جاري الإرسال...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
 
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyhfvp-HI3POFWew22YGIfQkQ--TqIFw-f6baIQoS1jlC3IwUnAHGNc5iG_VtRZpKvy8w/exec', {
+                // Log data being sent for debugging
+                console.log('📤 إرسال البيانات:', {
+                    name: formData.name,
+                    phone: formData.phoneCountryCode + formData.phone,
+                    clientType: formData.clientType,
+                    timestamp: formData.timestamp
+                });
+                
+                // Submit form data using fetch with no-cors mode
+                const response = await fetchWithRetry(SCRIPT_URL, {
                     method: 'POST',
-                    redirect: 'follow',
-                    body: JSON.stringify(formData),
+                    mode: 'no-cors', // CRITICAL: Required for Google Apps Script
+                    cache: 'no-cache',
                     headers: {
-                        'Content-Type': 'text/plain;charset=utf-8'
-                    }
+                        'Content-Type': 'application/json',
+                    },
+                    redirect: 'follow',
+                    body: JSON.stringify(formData)
                 });
 
-                if (response.ok) {
-                    console.log('✅ تم الإرسال بنجاح - HTTP 200');
-                    showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
-                    form.reset();
-                    goToStep1();
-                } else {
-                    console.warn(`⚠️ Response Status: ${response.status} - لكن البيانات قد تكون وصلت`);
-                    showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
-                    form.reset();
-                    goToStep1();
-                }
-
-            } catch (error) {
-                console.error('❌ Fetch Error (قد لا يعني فشل):', error);
+                // Because of 'no-cors' mode, we can't read the response
+                // But if we reach here without errors, the request was sent successfully
+                console.log('✅ تم إرسال الطلب بنجاح إلى Google Sheets');
+                
+                // Show success message
                 showConfirmationModal('success', '✅ تم الإرسال بنجاح!', 'تم إرسال طلبك بنجاح! سنتواصل معك في أقرب وقت ممكن على الرقم المسجل.');
                 form.reset();
                 goToStep1();
 
+            } catch (error) {
+                // Show error message
+                console.error('❌ خطأ في الإرسال:', error);
+                console.error('📋 تفاصيل الخطأ:', {
+                    message: error.message,
+                    type: error.name,
+                    stack: error.stack
+                });
+                
+                showConfirmationModal('error', '❌ فشل الإرسال', 'حدث خطأ أثناء إرسال الطلب. الرجاء المحاولة مرة أخرى أو التواصل معنا مباشرة على 01500070300');
             } finally {
+                // Re-enable submit button
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
+                submitBtn.style.opacity = '';
+                submitBtn.style.cursor = '';
             }
         });
     }
+
+    // Initialize section observer
+    document.querySelectorAll('.section').forEach(section => {
+        sectionObserver.observe(section);
+    });
 });
 
-// =====================================================
-// CONFIRMATION MODAL FUNCTIONS
-// =====================================================
-function showConfirmationModal(type, title, message) {
-    const modal = document.getElementById('confirmationModal');
-    const icon = document.getElementById('confirmationIcon');
-    const titleEl = document.getElementById('confirmationTitle');
-    const messageEl = document.getElementById('confirmationMessage');
-
-    if (type === 'success') {
-        icon.innerHTML = '✓';
-        icon.className = 'confirmation-icon success';
-    } else {
-        icon.innerHTML = '✕';
-        icon.className = 'confirmation-icon error';
-    }
-
-    titleEl.textContent = title;
-    messageEl.textContent = message;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+// ==================== PERFORMANCE OPTIMIZATION ====================
+// Lazy loading images
+if ('loading' in HTMLImageElement.prototype) {
+    document.querySelectorAll('img').forEach(img => {
+        img.loading = 'lazy';
+    });
 }
 
-function closeConfirmationModal() {
-    const modal = document.getElementById('confirmationModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+// Load deferred styles
+function loadDeferredStyles() {
+    const addStylesNode = document.getElementById("deferred-styles");
+    if (addStylesNode) {
+        const replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    }
+}
 
-    window.location.reload();
+window.addEventListener('load', function() {
+    loadDeferredStyles();
+    validateScriptURL();
+});
+
+// ==================== INTERSECTION OBSERVER ====================
+const observerOptions = {
+    root: null,
+    rootMargin: '50px',
+    threshold: 0.1
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            sectionObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Map lazy loading
+const locationSection = document.getElementById('location');
+if (locationSection) {
+    const mapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !mapLoaded) {
+                setTimeout(loadMap, 500);
+                mapObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px' });
+    
+    mapObserver.observe(locationSection);
 }
 </script>
 </body>
