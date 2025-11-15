@@ -1897,7 +1897,7 @@ footer p {
                         <label class="form-label" for="source">
                             إيه مصدر معرفتك بريماكس براح؟ <span class="required">*</span>
                         </label>
-                        <select id="source" name="source" class="form-select" required onchange="toggleOtherSourceField()">
+                     <select id="source" name="source" class="form-select" required>
                             <option value="" disabled selected>-- اختر المصدر --</option>
                             <optgroup label="وسائل التواصل الاجتماعي">
                                 <option value="فيسبوك">فيسبوك</option>
@@ -1921,14 +1921,6 @@ footer p {
                             </optgroup>
                         </select>
                     </div>
-
-                    <div class="form-group" id="otherSourceField" style="display: none;">
-                        <label class="form-label" for="otherSource">
-                            حدد المصدر <span class="required">*</span>
-                        </label>
-                        <input type="text" id="otherSource" name="otherSource" class="form-input" placeholder="اكتب المصدر...">
-                    </div>
-
                     <div class="form-group">
                         <label class="form-label" for="agent">
                             المستشار العقاري <span class="required">*</span>
@@ -2631,7 +2623,7 @@ footer p {
 
 <script>
 // ==================== CONFIGURATION ====================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5yiG2HkqCiVpzG6AJeyohwVzoYzo_eG5qpD4wY7258FYQTE5c_2f0F21y-ppY9Ur-pg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwIUhWuPeQQ74Hh5NKWv7E6Bh0kVk8v2Y9CvIqw813f_dUzfZjeHSo3J8BMWHIv2MG7NA/exec';
 
 // ==================== UTILITY FUNCTIONS ====================
 // Validate Script URL
@@ -2856,6 +2848,7 @@ function acceptTerms() {
     document.getElementById('termsCheckbox').checked = true;
     closeTermsModal();
 }
+
 
 // ==================== FORM NAVIGATION ====================
 // Go to step 2
@@ -3157,7 +3150,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Prepare form data object
+            // Prepare form data object
             const formData = {
+                source: sanitizeInput(document.getElementById('source').value),
                 agent: sanitizeInput(document.getElementById('agent').value),
                 name: sanitizeInput(document.getElementById('name').value),
                 phoneCountryCode: phoneCountryCode,
