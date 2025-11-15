@@ -1860,189 +1860,224 @@ footer p {
         </div>
 
         <!-- Contact Form -->
-        <div class="hero-form-wrapper" id="contact-form">
-            <div class="form-card">
-                <div class="form-card-header">
-                    <h2 class="form-card-title">ابدأ رحلتك العقارية الآن</h2>
-                    <p class="form-card-subtitle">سجّل بياناتك وسنتواصل معك فوراً</p>
-                </div>
+<div class="hero-form-wrapper" id="contact-form">
+    <div class="form-card">
+        <div class="form-card-header">
+            <h2 class="form-card-title">ابدأ رحلتك العقارية الآن</h2>
+            <p class="form-card-subtitle">سجّل بياناتك وسنتواصل معك فوراً</p>
+        </div>
 
-                <!-- Progress Bar -->
-                <div class="progress-container-hero">
-                    <div class="progress-bar">
-                        <div class="progress-line">
-                            <div class="progress-line-fill" id="progressFill"></div>
+        <!-- Progress Bar -->
+        <div class="progress-container-hero">
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-step active" id="progressStep1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">معلوماتك</div>
+                </div>
+                <div class="progress-step" id="progressStep2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">تفاصيل العقار</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card-content">
+            <div id="messageBox" class="message"></div>
+
+            <form id="contactForm">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" id="step1">
+                    <!-- Honeypot for spam protection -->
+                    <input type="text" name="website" id="website" style="position: absolute; left: -5000px; opacity: 0; pointer-events: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="source">
+                            إيه مصدر معرفتك بريماكس براح؟ <span class="required">*</span>
+                        </label>
+                        <select id="source" name="source" class="form-select" required onchange="toggleOtherSourceField()">
+                            <option value="" disabled selected>-- اختر المصدر --</option>
+                            <optgroup label="وسائل التواصل الاجتماعي">
+                                <option value="فيسبوك">فيسبوك</option>
+                                <option value="انستجرام">انستجرام</option>
+                                <option value="تيك توك">تيك توك</option>
+                                <option value="يوتيوب">يوتيوب</option>
+                                <option value="تيليجرام">تيليجرام</option>
+                                <option value="واتساب">واتساب</option>
+                                <option value="لينكد إن">لينكد إن</option>
+                            </optgroup>
+                            <optgroup label="من الشركة مباشرة">
+                                <option value="مستشار عقاري">مستشار عقاري</option>
+                                <option value="المدير العام">المدير العام</option>
+                            </optgroup>
+                            <optgroup label="مصادر أخرى">
+                                <option value="صديق أو قريب">صديق أو قريب</option>
+                                <option value="عميل سابق">عميل سابق</option>
+                                <option value="جوجل">جوجل</option>
+                                <option value="إعلان ممول">إعلان ممول</option>
+                                <option value="موقع عقاري">موقع عقاري</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="otherSourceField" style="display: none;">
+                        <label class="form-label" for="otherSource">
+                            حدد المصدر <span class="required">*</span>
+                        </label>
+                        <input type="text" id="otherSource" name="otherSource" class="form-input" placeholder="اكتب المصدر...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="agent">
+                            المستشار العقاري <span class="required">*</span>
+                        </label>
+                        <select id="agent" name="agent" class="form-select" required>
+                            <option value="" disabled selected>-- اختار المستشار العقاري --</option>
+                            <option value="غير متابع">غير متابع مع مستشار عقاري</option>
+                            <optgroup label="الإدارة">
+                                <option value="المدير العام">المدير العام</option>
+                            </optgroup>
+                            <optgroup label="فريق المبيعات">
+                                <option value="محمد ايمن">محمد أيمن</option>
+                                <option value="ماركو ناصر">ماركو ناصر</option>
+                                <option value="مريم رشاد">مريم رشاد</option>
+                                <option value="ساندرا امجد">ساندرا أمجد</option>
+                                <option value="كريستين مجدي">كريستين مجدي</option>
+                                <option value="فاطمه ايهاب">فاطمة إيهاب</option>
+                                <option value="ساره سعد">سارة سعد</option>
+                                <option value="ايه فاروق">آية فاروق</option>
+                                <option value="الاء حاتم">الاء حاتم</option>
+                                <option value="امنه جمال">آمنة جمال</option>
+                                <option value="ايه محمد">آية محمد</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
+                                    <option value="">كود الدولة</option>
+                                    <option value="+20" selected>مصر (+20)</option>
+                                    <option value="+966">السعودية (+966)</option>
+                                    <option value="+971">الإمارات (+971)</option>
+                                    <option value="+965">الكويت (+965)</option>
+                                    <option value="+974">قطر (+974)</option>
+                                    <option value="+968">عمان (+968)</option>
+                                    <option value="+973">البحرين (+973)</option>
+                                    <option value="+962">الأردن (+962)</option>
+                                    <option value="+961">لبنان (+961)</option>
+                                    <option value="+1">الولايات المتحدة (+1)</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="أدخل رقم الهاتف" inputmode="numeric" required>
+                            </div>
                         </div>
-                        <div class="progress-step active" id="progressStep1">
-                            <div class="step-circle">1</div>
-                            <div class="step-label">معلوماتك</div>
-                        </div>
-                        <div class="progress-step" id="progressStep2">
-                            <div class="step-circle">2</div>
-                            <div class="step-label">تفاصيل العقار</div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
+                                    <option value="">كود الدولة</option>
+                                    <option value="+20" selected>مصر (+20)</option>
+                                    <option value="+966">السعودية (+966)</option>
+                                    <option value="+971">الإمارات (+971)</option>
+                                    <option value="+965">الكويت (+965)</option>
+                                    <option value="+974">قطر (+974)</option>
+                                    <option value="+968">عمان (+968)</option>
+                                    <option value="+973">البحرين (+973)</option>
+                                    <option value="+962">الأردن (+962)</option>
+                                    <option value="+961">لبنان (+961)</option>
+                                    <option value="+1">الولايات المتحدة (+1)</option>
+                                </select>
+                                <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب (اختياري)" inputmode="numeric">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-card-content">
-                    <div id="messageBox" class="message"></div>
-
-                    <form id="contactForm">
-                        <!-- Step 1: Personal Information -->
-                        <div class="form-step active" id="step1">
-                            <!-- Honeypot for spam protection -->
-                            <input type="text" name="website" id="website" style="position: absolute; left: -5000px; opacity: 0; pointer-events: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="agent">
-                                    المستشار العقاري <span class="required">*</span>
-                                </label>
-                                <select id="agent" name="agent" class="form-select" required>
-                                    <option value="" disabled selected>-- اختار المستشار العقاري --</option>
-                                    <option value="غير متابع">غير متابع مع مستشار عقاري</option>
-                                    <optgroup label="الإدارة">
-                                        <option value="المدير العام">المدير العام</option>
-                                    </optgroup>
-                                    <optgroup label="فريق المبيعات">
-                                        <option value="محمد ايمن">محمد أيمن</option>
-                                        <option value="ماركو ناصر">ماركو ناصر</option>
-                                        <option value="مريم رشاد">مريم رشاد</option>
-                                        <option value="ساندرا امجد">ساندرا أمجد</option>
-                                        <option value="كريستين مجدي">كريستين مجدي</option>
-                                        <option value="فاطمه ايهاب">فاطمة إيهاب</option>
-                                        <option value="ساره سعد">سارة سعد</option>
-                                        <option value="ايه فاروق">آية فاروق</option>
-                                        <option value="الاء حاتم">الاء حاتم</option>
-                                        <option value="امنه جمال">آمنة جمال</option>
-                                        <option value="ايه محمد">آية محمد</option>
-                                    </optgroup>
-                                </select>
+                    <div class="form-group">
+                        <label class="form-label">أنا <span class="required">*</span></label>
+                        <div class="category-grid">
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="seller" value="بائع">
+                                <label for="seller" class="category-label"><span>بائع</span></label>
                             </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="name">الاسم الكامل <span class="required">*</span></label>
-                                <input type="text" id="name" name="name" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="buyer" value="مشتري">
+                                <label for="buyer" class="category-label"><span>مشتري</span></label>
                             </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label" for="phone">رقم الهاتف <span class="required">*</span></label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <select id="phoneCountryCode" name="phoneCountryCode" class="form-select" style="width: 120px;" required>
-                                            <option value="">كود الدولة</option>
-                                            <option value="+20" selected>مصر (+20)</option>
-                                            <option value="+966">السعودية (+966)</option>
-                                            <option value="+971">الإمارات (+971)</option>
-                                            <option value="+965">الكويت (+965)</option>
-                                            <option value="+974">قطر (+974)</option>
-                                            <option value="+968">عمان (+968)</option>
-                                            <option value="+973">البحرين (+973)</option>
-                                            <option value="+962">الأردن (+962)</option>
-                                            <option value="+961">لبنان (+961)</option>
-                                            <option value="+1">الولايات المتحدة (+1)</option>
-                                        </select>
-                                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="أدخل رقم الهاتف" inputmode="numeric" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="whatsapp">رقم الواتساب (اختياري)</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <select id="whatsappCountryCode" name="whatsappCountryCode" class="form-select" style="width: 120px;">
-                                            <option value="">كود الدولة</option>
-                                            <option value="+20" selected>مصر (+20)</option>
-                                            <option value="+966">السعودية (+966)</option>
-                                            <option value="+971">الإمارات (+971)</option>
-                                            <option value="+965">الكويت (+965)</option>
-                                            <option value="+974">قطر (+974)</option>
-                                            <option value="+968">عمان (+968)</option>
-                                            <option value="+973">البحرين (+973)</option>
-                                            <option value="+962">الأردن (+962)</option>
-                                            <option value="+961">لبنان (+961)</option>
-                                            <option value="+1">الولايات المتحدة (+1)</option>
-                                        </select>
-                                        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="أدخل رقم الواتساب (اختياري)" inputmode="numeric">
-                                    </div>
-                                </div>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="renter" value="مستأجر">
+                                <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
                             </div>
-
-                            <div class="form-group">
-                                <label class="form-label">أنا <span class="required">*</span></label>
-                                <div class="category-grid">
-                                    <div class="category-option">
-                                        <input type="radio" name="clientType" id="seller" value="بائع">
-                                        <label for="seller" class="category-label"><span>بائع</span></label>
-                                    </div>
-                                    <div class="category-option">
-                                        <input type="radio" name="clientType" id="buyer" value="مشتري">
-                                        <label for="buyer" class="category-label"><span>مشتري</span></label>
-                                    </div>
-                                    <div class="category-option">
-                                        <input type="radio" name="clientType" id="renter" value="مستأجر">
-                                        <label for="renter" class="category-label"><span>أبحث عن إيجار</span></label>
-                                    </div>
-                                    <div class="category-option">
-                                        <input type="radio" name="clientType" id="landlord" value="مؤجر">
-                                        <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">تفضل التواصل  (اختياري)</label>
-                                <div class="category-grid">
-                                    <div class="category-option">
-                                        <input type="radio" name="contactMethod" id="contactPhone" value="هاتفياً">
-                                        <label for="contactPhone" class="category-label">
-                                            <span>
-                                                <i class="fas fa-phone-alt" style="margin-left: 8px; font-size: 16px;"></i>
-                                                هاتفياً
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="category-option">
-                                        <input type="radio" name="contactMethod" id="contactWhatsapp" value="واتساب">
-                                        <label for="contactWhatsapp" class="category-label">
-                                            <span>
-                                                <i class="fab fa-whatsapp" style="margin-left: 8px; font-size: 18px;"></i>
-                                                واتساب
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">الوقت المفضل للتواصل (اختياري)</label>
-                                <div class="time-picker-container">
-                                    <select id="preferredHour" name="preferredHour" class="time-select">
-                                        <option value="" disabled selected>-- اختر الساعة --</option>
-                                        <option value="12">12</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                    </select>
-                                    <select id="preferredPeriod" name="preferredPeriod" class="time-select">
-                                        <option value="" disabled selected>-- اختر الفترة --</option>
-                                        <option value="صباحاً">صباحاً</option>
-                                        <option value="مساءً">مساءً</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="btn-container">
-                                <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
+                            <div class="category-option">
+                                <input type="radio" name="clientType" id="landlord" value="مؤجر">
+                                <label for="landlord" class="category-label"><span>أملك وحدة للإيجار</span></label>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="form-label">تفضل التواصل  (اختياري)</label>
+                        <div class="category-grid">
+                            <div class="category-option">
+                                <input type="radio" name="contactMethod" id="contactPhone" value="هاتفياً">
+                                <label for="contactPhone" class="category-label">
+                                    <span>
+                                        <i class="fas fa-phone-alt" style="margin-left: 8px; font-size: 16px;"></i>
+                                        هاتفياً
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="contactMethod" id="contactWhatsapp" value="واتساب">
+                                <label for="contactWhatsapp" class="category-label">
+                                    <span>
+                                        <i class="fab fa-whatsapp" style="margin-left: 8px; font-size: 18px;"></i>
+                                        واتساب
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الوقت المفضل للتواصل (اختياري)</label>
+                        <div class="time-picker-container">
+                            <select id="preferredHour" name="preferredHour" class="time-select">
+                                <option value="" disabled selected>-- اختر الساعة --</option>
+                                <option value="12">12</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+                            <select id="preferredPeriod" name="preferredPeriod" class="time-select">
+                                <option value="" disabled selected>-- اختر الفترة --</option>
+                                <option value="صباحاً">صباحاً</option>
+                                <option value="مساءً">مساءً</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary" onclick="goToStep2()">التالي →</button>
+                    </div>
+                </div>
                         <!-- Step 2: Property Details -->
                         <div class="form-step" id="step2">
                             <div class="section-header">
@@ -2596,7 +2631,7 @@ footer p {
 
 <script>
 // ==================== CONFIGURATION ====================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGJVJ52c4la2wYxde6rPFwHtINwlgSDBM8Fx3BEZOEHL2Jxo_p_q5HFVfY2imMhCvuxw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoTn4t0h97koJRMlfA4WaibLK8yOQVvt4dH0FRnhv8dGVtFfL_a2GgaxBtTgEzIXTIlA/exec';
 
 // ==================== UTILITY FUNCTIONS ====================
 // Validate Script URL
@@ -2825,14 +2860,21 @@ function acceptTerms() {
 // ==================== FORM NAVIGATION ====================
 // Go to step 2
 function goToStep2() {
+    const source = document.getElementById('source').value;
+    const agent = document.getElementById('agent').value;
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const phoneCountryCode = document.getElementById('phoneCountryCode').value;
     const whatsapp = document.getElementById('whatsapp').value.trim();
     const whatsappCountryCode = document.getElementById('whatsappCountryCode').value;
-    const agent = document.getElementById('agent').value;
     const clientType = document.querySelector('input[name="clientType"]:checked');
     const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
+
+    if (!source) {
+        showMessage('الرجاء اختيار مصدر معرفتك بريماكس براح', 'error');
+        document.getElementById('source').focus();
+        return;
+    }
 
     if (!agent) {
         showMessage('الرجاء اختيار المستشار العقاري', 'error');
