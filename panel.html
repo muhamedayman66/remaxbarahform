@@ -89,9 +89,14 @@
             gap: 10px;
         }
         
-        .btn:hover {
+        .btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
         
         .btn-primary {
@@ -127,6 +132,12 @@
         
         .status.show {
             display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .status.success {
@@ -169,6 +180,20 @@
             color: #856404;
             font-size: 14px;
             line-height: 1.8;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -239,12 +264,11 @@
     </div>
 
     <script>
-        // ضع هنا رابط Google Apps Script Web App
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSrjHW2mrzpj3VGrgEXcX35AmrGVbnkyaf-ErUZPhHpBzTk1SKsUjybjlv8O106pQBuA/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6JbpLuWQm3ZrijJf2VY5V_n7nyfUOqStzWs5v0x-r_lT4CHVR-r3QjGvisBVwcGbdKA/exec';
         
         function showStatus(message, type) {
             const status = document.getElementById('status');
-            status.textContent = message;
+            status.innerHTML = message;
             status.className = `status show ${type}`;
             
             if (type !== 'loading') {
@@ -253,15 +277,32 @@
                 }, 5000);
             }
         }
+
+        function disableAllButtons() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+
+        function enableAllButtons() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => btn.disabled = false);
+        }
         
         async function sendAlert(days) {
             try {
-                showStatus('جاري إرسال الإشعارات...', 'loading');
+                disableAllButtons();
+                showStatus('<span class="spinner"></span> جاري إرسال الإشعارات...', 'loading');
                 
-                const response = await fetch(`${SCRIPT_URL}?action=send_alert&days=${days}`, {
+                const url = `${SCRIPT_URL}?action=send_alert&days=${days}&t=${Date.now()}`;
+                
+                const response = await fetch(url, {
                     method: 'GET',
-                    mode: 'cors'
+                    redirect: 'follow'
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 
                 const result = await response.json();
                 
@@ -269,37 +310,60 @@
                     const dayText = days === 0 ? 'فوري' : 
                                    days === 1 ? 'قبل يوم' : 
                                    `قبل ${days} أيام`;
-                    showStatus(`تم إرسال التنبيه (${dayText}) بنجاح لجميع المسؤولين`, 'success');
+                    showStatus(`✅ تم إرسال التنبيه (${dayText}) بنجاح لجميع المسؤولين`, 'success');
                 } else {
-                    showStatus('حدث خطأ في الإرسال: ' + result.error, 'error');
+                    showStatus('❌ حدث خطأ في الإرسال: ' + (result.error || result.message), 'error');
                 }
             } catch (error) {
-                showStatus('خطأ في الاتصال: ' + error.message, 'error');
-                console.error(error);
+                console.error('Error details:', error);
+                showStatus('❌ خطأ في الاتصال: ' + error.message + '<br><small>تأكد من صحة رابط Web App في الكود</small>', 'error');
+            } finally {
+                enableAllButtons();
             }
         }
         
         async function sendCompletedNotification() {
             try {
-                showStatus('جاري إرسال إشعار انتهاء الصيانة...', 'loading');
+                disableAllButtons();
+                showStatus('<span class="spinner"></span> جاري إرسال إشعار انتهاء الصيانة...', 'loading');
                 
-                const response = await fetch(`${SCRIPT_URL}?action=completed`, {
+                const url = `${SCRIPT_URL}?action=completed&t=${Date.now()}`;
+                
+                const response = await fetch(url, {
                     method: 'GET',
-                    mode: 'cors'
+                    redirect: 'follow'
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 
                 const result = await response.json();
                 
                 if (result.success) {
-                    showStatus('تم إرسال إشعار انتهاء الصيانة بنجاح', 'success');
+                    showStatus('✅ تم إرسال إشعار انتهاء الصيانة بنجاح', 'success');
                 } else {
-                    showStatus('حدث خطأ في الإرسال', 'error');
+                    showStatus('❌ حدث خطأ في الإرسال: ' + (result.error || result.message), 'error');
                 }
             } catch (error) {
-                showStatus('خطأ في الاتصال: ' + error.message, 'error');
-                console.error(error);
+                console.error('Error details:', error);
+                showStatus('❌ خطأ في الاتصال: ' + error.message + '<br><small>تأكد من صحة رابط Web App في الكود</small>', 'error');
+            } finally {
+                enableAllButtons();
             }
         }
+
+        // اختبار الاتصال عند تحميل الصفحة
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const text = await response.text();
+                console.log('✅ الاتصال بـ Apps Script ناجح:', text);
+            } catch (error) {
+                console.error('❌ فشل الاتصال بـ Apps Script:', error);
+                showStatus('⚠️ تحذير: تأكد من تحديث رابط SCRIPT_URL في الكود', 'error');
+            }
+        });
     </script>
 </body>
 </html>
