@@ -26,13 +26,14 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #1a1a2e 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         @keyframes gradientShift {
@@ -41,12 +42,31 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        body::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+        }
+        
+        body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+
         /* Animated Particles */
         .particle {
-            position: absolute;
+            position: fixed;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             animation: float-particle 20s infinite;
+            pointer-events: none;
         }
 
         @keyframes float-particle {
@@ -64,11 +84,12 @@
 
         /* Floating Icons */
         .floating-icon {
-            position: absolute;
+            position: fixed;
             font-size: 60px;
             color: rgba(255, 255, 255, 0.06);
             animation: float 8s ease-in-out infinite;
             z-index: 1;
+            pointer-events: none;
         }
 
         .floating-icon:nth-child(1) {
@@ -104,24 +125,12 @@
         .maintenance-container {
             max-width: 800px;
             width: 100%;
-            max-height: 100vh;
-            overflow-y: auto;
             text-align: center;
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
             padding: 80px 20px 20px;
-        }
-
-        /* Hide scrollbar but keep functionality */
-        .maintenance-container::-webkit-scrollbar {
-            width: 0;
-            display: none;
-        }
-        
-        .maintenance-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            margin: 20px 0;
         }
 
         @keyframes fadeInUp {
@@ -137,7 +146,7 @@
 
         /* Logo */
         .logo {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 30px;
             animation: zoomIn 1s ease-out 0.2s both;
@@ -744,3 +753,4 @@
         setTimeout(() => window.location.reload(), 300000);
     </script>
 </body>
+</html>
