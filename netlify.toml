@@ -4,8 +4,8 @@ to = "/images/:splat"
 status = 200
 force = true
 
-[[redirects]]
-from = "/*"
-to = "/maintenance.html"
-status = 200
-force = true
+# [[redirects]]
+# from = "/*"
+# to = "/maintenance.html"
+# status = 200
+# force = true
